@@ -1,4 +1,3 @@
-import { date } from '@payloadcms/db-vercel-postgres/drizzle/pg-core'
 import { CollectionConfig } from 'payload'
 
 export const Conferences: CollectionConfig = {
