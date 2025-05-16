@@ -2,7 +2,7 @@ import PublicationCard from './PublicationCard'
 import type { Metadata } from 'next/types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { PageRange } from '@/components/PageRange'
+import { PageRange } from '@/app/(frontend)/components/PageRange'
 
 const Publications = async () => {
   const payload = await getPayload({ config: configPromise })

@@ -11,13 +11,13 @@ const About = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex justify-center items-center w-full lg:w-1/2">
             {/* Uncomment and use image below if needed */}
-            <Image
+            {/* <Image
               src="/assets/ester1.png"
               className="rounded-full aspect-square object-cover shadow-lg"
               width={288}
               height={288}
               alt="Profile Image"
-            />
+            /> */}
           </div>
 
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
