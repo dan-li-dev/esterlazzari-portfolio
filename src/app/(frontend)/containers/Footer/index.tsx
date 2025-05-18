@@ -1,4 +1,4 @@
-import { FaAngleUp, FaTwitter, FaLinkedin, FaUniversity, FaEnvelope } from 'react-icons/fa';
+import { FaAngleUp, FaTwitter, FaLinkedin, FaUniversity, FaEnvelope } from 'react-icons/fa'
 
 const socialLinks = [
   {
@@ -17,12 +17,15 @@ const socialLinks = [
     href: 'mailto:ester.lazzari@univie.ac.at',
     icon: <FaEnvelope />,
   },
-];
+]
 
 const Footer = () => (
-  <footer className="bg-gray-800 text-white py-16 text-center">
+  <footer id="footer" className="bg-gray-800 text-white py-16 text-center">
     <div className="container mx-auto px-4">
-      <a href="#top" className="inline-block mb-8 text-4xl hover:-translate-y-1 transition-transform">
+      <a
+        href="#top"
+        className="inline-block mb-8 text-4xl hover:-translate-y-1 transition-transform"
+      >
         <FaAngleUp />
       </a>
 
@@ -45,6 +48,6 @@ const Footer = () => (
       <p className="text-sm text-gray-400">© 2023 - Ester Lazzari</p>
     </div>
   </footer>
-);
+)
 
-export default Footer;
+export default Footer

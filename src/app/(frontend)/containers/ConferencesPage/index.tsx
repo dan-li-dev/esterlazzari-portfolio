@@ -18,28 +18,44 @@ const formatConferences = (
 }
 
 const Conferences = async () => {
-  // const conferences = [
-  //   {
-  //     title: 'Australian Population Conference',
-  //     dates: '(2020 – virtual; 2022 - Canberra)',
-  //   },
-  //   {
-  //     title: 'British Society for Population Studies Conference',
-  //     dates: '(2022 – Winchester)',
-  //   },
-  //   {
-  //     title: 'European Population Conference',
-  //     dates: '(2022 – Groningen)',
-  //   },
-  //   {
-  //     title: 'International Population Conference',
-  //     dates: '(2021 – virtual)',
-  //   },
-  //   {
-  //     title: 'Population Association of America',
-  //     dates: '(2021 – virtual; 2022 – Atlanta; 2023 - New Orleans)',
-  //   },
-  // ]
+  const mockConferences = [
+    {
+      name: 'International Population Conference',
+      attendance: [
+        { id: '1', date: '2023-05-10', location: 'Vienna' },
+        { id: '2', date: '2024-06-15', location: 'Tokyo' },
+      ],
+    },
+    {
+      name: 'European Demography Forum',
+      attendance: [
+        { id: '3', date: '2022-09-20', location: 'Berlin' },
+        { id: '4', date: '2023-11-05', location: 'Madrid' },
+      ],
+    },
+    {
+      name: 'Asian Population Association Conference',
+      attendance: [
+        { id: '5', date: '2021-08-12', location: 'Seoul' },
+        { id: '6', date: '2023-10-01', location: 'Bangkok' },
+      ],
+    },
+    {
+      name: 'PAA Annual Meeting',
+      attendance: [
+        { id: '7', date: '2022-04-07', location: 'Atlanta' },
+        { id: '8', date: '2023-04-12', location: 'New Orleans' },
+        { id: '9', date: '2024-04-17', location: 'Columbus' },
+      ],
+    },
+    {
+      name: 'Population and Policy Conference',
+      attendance: [
+        { id: '10', date: '2021-03-15', location: 'London' },
+        { id: '11', date: '2023-03-20', location: 'Oslo' },
+      ],
+    },
+  ]
 
   const payload = await getPayload({ config: configPromise })
 
@@ -56,8 +72,6 @@ const Conferences = async () => {
 
   const conferences = conferencesQuery.docs
 
-  console.log(conferences)
-
   return (
     <section
       id="conferences"
@@ -67,7 +81,7 @@ const Conferences = async () => {
         <h2 className="text-4xl font-bold  mb-12">Conferences</h2>
         <div className="mt-8 text-xl md:text-2xl">
           <dl className="space-y-4">
-            {conferences.map((conf, idx) => (
+            {mockConferences.map((conf, idx) => (
               <div key={idx}>
                 <dt className="font-semibold">{conf.name}</dt>
                 <dd>

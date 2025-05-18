@@ -2,36 +2,35 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center bg-white text-slate-800 px-6 sm:px-8 lg:px-24"
+      className="min-h-screen flex items-center bg-background text-foreground px-6 sm:px-8 lg:px-24"
     >
-      <div className="w-full">
-        <h1 className="lg:text-5xl sm:text-4xl xs:text-3xl font-bold mb-8 text-left lg:text-left sm:text-left ">
-          <span className="text-primary">Ester Lazzari</span>
+      <div className="max-w-7xl w-full mx-auto">
+        <h1 className="text-center md:text-left text-3xl sm:text-4xl lg:text-6xl font-bold mb-8">
+          <span className="bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+            Ester Lazzari
+          </span>
           <br />
           Demographer
         </h1>
-        <p className="flex flex-row sm:justify-start space-x-4">
+        <p className="flex flex-row md:justify-start space-x-4 justify-center">
           <a
-            rel="noreferrer"
-            className="text-lg sm:text-base inline-block bg-primary text-white px-6 py-3 rounded hover:bg-primary/90 transition"
             href="#about"
+            className="relative inline-block px-4 py-1.5 border-current text-primary overflow-hidden group font-bold border-2 "
           >
-            Know more
-          </a>
-          <button className="relative rounded px-6 py-3 border border-current text-primary overflow-hidden group">
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-              Hover Me
+            <span className=" text-[clamp(0.8rem,2vw,1.75rem)] relative z-10 transition-colors duration-300 group-hover:text-white">
+              Know More
             </span>
             <span className="absolute inset-0 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
-          </button>
-
-          {/* <a
-            rel="noreferrer"
-            className="text-lg sm:text-base inline-block bg-primary text-white px-6 py-3 rounded hover:bg-primary/90 transition"
-            href="#News"
+          </a>
+          <a
+            href="#media"
+            className="relative inline-block px-4 py-1.5 border-current text-primary overflow-hidden group font-bold border-2"
           >
-            News/Events
-          </a> */}
+            <span className=" text-[clamp(0.8rem,2vw,1.75rem)] relative z-10 transition-colors duration-300 group-hover:text-white">
+              Media Mentions
+            </span>
+            <span className="absolute inset-0 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
+          </a>
         </p>
       </div>
     </section>

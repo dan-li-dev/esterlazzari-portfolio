@@ -12,8 +12,8 @@ const montserrat = Montserrat({
 // import { Animations } from './scroll-effect'
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: 'Ester Lazzari | Demographer',
+  title: 'Ester Lazzari | Demographer',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

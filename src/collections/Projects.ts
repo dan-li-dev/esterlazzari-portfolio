@@ -14,6 +14,10 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
+      name: 'pin',
+      type: 'checkbox',
+    },
+    {
       name: 'status',
       type: 'text',
       required: true,

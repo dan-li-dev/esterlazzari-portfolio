@@ -13,6 +13,7 @@ import Projects from '@/app/(frontend)/containers/ProjectsPage'
 import Conferences from '@/app/(frontend)/containers/ConferencesPage'
 import Footer from '@/app/(frontend)/containers/Footer'
 import Navbar from '@/app/(frontend)/containers/Nav'
+import Media from '@/app/(frontend)/containers/MediaPage'
 import { Animations } from './scroll-effect'
 
 export default async function HomePage() {
@@ -29,6 +30,7 @@ export default async function HomePage() {
       <Hero />
       <About />
       <Publications />
+      <Media />
       <Projects />
       <Conferences />
       <Footer />

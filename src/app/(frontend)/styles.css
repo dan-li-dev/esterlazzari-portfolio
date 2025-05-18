@@ -18,56 +18,49 @@ html {
   }
 
   :root {
-    /* Base colors */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 20%; /* from $dark-grey (#333333) */
+    /* Soft background with subtle color */
+    --background: 210 20% 96%; /* soft gray-blue */
+    --foreground: 240 10% 10%; /* near-black but not fully black */
 
-    /* Cards & containers */
-    --card: 240 5% 96%;
-    --card-foreground: 248 32% 19%; /* from $dark-blue-text (#272341) */
+    /* Cards & containers (slightly lifted tone) */
+    --card: 210 25% 92%; /* subtle lift from background */
+    --card-foreground: 240 15% 15%; /* readable deep navy */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover: 210 20% 98%; /* barely lighter than background */
+    --popover-foreground: 240 10% 10%;
 
-    /* Primary brand colors */
-    --primary: 182.7 97.8% 34.9%; /* from $primary-color (#02aab0) */
-    --primary-foreground: 0 0% 20%;
+    /* Branding (keep as-is if consistent) */
+    --primary: 182.7 97.8% 34.9%; /* turquoise */
+    --primary-foreground: 0 0% 100%; /* white text on primary */
 
-    --secondary: 165.7 100% 40.2%; /* from $secondary-color (#00cdac) */
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 165.7 100% 40.2%; /* mint green */
+    --secondary-foreground: 0 0% 100%; /* white text on secondary */
 
     /* Supporting UI colors */
-    --muted: 0 0% 82.4%; /* from $light-grey (#d2d2d2) */
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 15% 85%;
+    --muted-foreground: 215.4 12% 30%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 0 0% 20%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 240 10% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 80%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 0% 20%;
+    --border: 210 10% 75%;
+    --input: 210 20% 92%;
+    --ring: 240 10% 20%;
 
-    /* Semantic colors */
-    --success: 196 52% 74%;
-    --warning: 34 89% 85%;
-    --error: 10 100% 86%;
-
-    /* Border radius */
-    --radius: 0.2rem;
-
-    /* Extra named legacy colors (optional) */
-    --dark-grey: 0 0% 20%; /* alias for $dark-grey */
-    --light-grey: 0 0% 82.4%; /* alias for $light-grey */
+    /* Semantic */
+    --success: 158 45% 55%;
+    --warning: 34 89% 65%;
+    --error: 10 100% 65%;
   }
 }
 
 @layer utilities {
   .clip-path-about {
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
 }
 

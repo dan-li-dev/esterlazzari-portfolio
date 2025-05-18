@@ -178,6 +178,7 @@ export interface Publication {
 export interface Project {
   id: string;
   title: string;
+  pin?: boolean | null;
   status: string;
   description?: {
     root: {
@@ -339,6 +340,7 @@ export interface PublicationsSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
+  pin?: T;
   status?: T;
   description?: T;
   date?: T;
