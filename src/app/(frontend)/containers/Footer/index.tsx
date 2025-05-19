@@ -1,5 +1,6 @@
 import { FaAngleUp, FaTwitter, FaLinkedin, FaUniversity, FaEnvelope } from 'react-icons/fa'
 import { HiAcademicCap } from 'react-icons/hi'
+import { ArrowToTop } from '@/app/(frontend)/components/ArrowToTop'
 
 const socialLinks = [
   {
@@ -28,7 +29,7 @@ const Footer = () => (
   <footer id="footer" className="bg-gray-900 text-white py-12 text-center">
     <div className="container mx-auto px-4 flex flex-col items-center space-y-8">
       {/* Back to Top */}
-
+      <ArrowToTop />
       {/* Social Links */}
       <div className="flex justify-center gap-6 text-2xl">
         {socialLinks.map(({ href, icon }, idx) => (

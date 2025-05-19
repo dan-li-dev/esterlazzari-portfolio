@@ -9,6 +9,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen)
+  const menuItems = [
+    ['About', 'about'],
+    ['Publications', 'research'],
+    ['Media', 'media'],
+    // ['Projects', 'projects'],
+    ['Conferences', 'conferences'],
+    ['Contact', 'footer'],
+  ]
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -25,14 +33,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6">
-            {[
-              ['About', 'about'],
-              ['Publications', 'research'],
-              ['Media', 'media'],
-              ['Projects', 'projects'],
-              ['Conferences', 'conferences'],
-              ['Contact', 'footer'],
-            ].map(([label, href]) => (
+            {menuItems.map(([label, href]) => (
               <a
                 key={href}
                 onClick={() => scrollToSection(href)}
@@ -58,14 +59,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            {[
-              ['About', '#about'],
-              ['Publications', '#research'],
-              ['Media', '#media'],
-              ['Projects', '#projects'],
-              ['Conferences', '#conferences'],
-              ['Contact', '#footer'],
-            ].map(([label, href]) => (
+            {menuItems.map(([label, href]) => (
               <a
                 key={href}
                 href={href}

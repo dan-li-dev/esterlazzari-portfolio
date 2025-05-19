@@ -18,12 +18,12 @@ import { Animations } from './scroll-effect'
 import GA from '@/app/(frontend)/components/GoogleAnalytics'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig, importMap: {} })
-  const { user } = await payload.auth({ headers })
+  // const headers = await getHeaders()
+  // const payloadConfig = await config
+  // const payload = await getPayload({ config: payloadConfig })
+  // const { user } = await payload.auth({ headers })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
   return (
     <>
       <Hero />

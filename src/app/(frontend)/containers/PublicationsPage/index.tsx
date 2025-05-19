@@ -12,6 +12,7 @@ const Publications = async () => {
     collection: 'publications',
     depth: 1,
     pagination: false,
+    sort: '-date',
     select: {
       title: true,
       authors: true,
@@ -30,7 +31,7 @@ const Publications = async () => {
   return (
     <section id="research" className="scroll-mt-16 bg-background text-foreground py-12 lg:py-20">
       <div className="container mx-auto px-6 lg:px-24">
-        <h2 className="text-4xl font-bold text-center mb-8">Recent Publications</h2>
+        <h2 className="text-4xl font-bold text-center mb-8">Publications</h2>
 
         <p className="text-center text-sm text-muted-foreground font-medium mb-10">
           Displaying {publicationsToShow.length} of {publicationsQuery.totalDocs} publications

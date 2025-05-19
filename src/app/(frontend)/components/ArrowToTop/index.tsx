@@ -1,3 +1,4 @@
+'use client'
 import { scrollToTop } from '@/app/(frontend)/utils/scroll'
 import { FaAngleUp } from 'react-icons/fa'
 export const ArrowToTop = () => (

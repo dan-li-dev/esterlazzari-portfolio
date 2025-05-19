@@ -4,7 +4,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 const Media = async () => {
-  const payload = await getPayload({ config: configPromise, importMap: {} })
+  const payload = await getPayload({ config: configPromise })
   const countMediaToShow = 4
 
   const mediaQuery = await payload.find({
@@ -22,35 +22,6 @@ const Media = async () => {
   const mediaItems = mediaQuery.docs
   // const mediaToShow = mediaItems.slice(0, countMediaToShow)
   const mediaToShow = mediaItems
-  console.log(mediaToShow)
-
-  // const mockMediaItems = [
-  //   {
-  //     title: 'Why Fertility Rates Are Falling Around the World',
-  //     publisher: 'The New York Times',
-  //     articleLink: 'https://www.nytimes.com/2024/01/12/world/fertility-decline-global.html',
-  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a', // replace with your CDN or R2 URL
-  //   },
-  //   {
-  //     title: 'The IVF Boom and What It Means for Demography',
-  //     publisher: 'BBC News',
-  //     articleLink: 'https://www.bbc.com/news/health-ivf-demographic-shift',
-  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
-  //   },
-  //   {
-  //     title: 'Europe’s Population Crisis: Can Tech Help?',
-  //     publisher: 'The Guardian',
-  //     articleLink:
-  //       'https://www.theguardian.com/world/2024/apr/15/europe-population-crisis-tech-solutions',
-  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
-  //   },
-  //   {
-  //     title: 'Academic Spotlight: New Research on Assisted Reproduction Policies',
-  //     publisher: 'Nature News',
-  //     articleLink: 'https://www.nature.com/articles/assisted-reproduction-policy-analysis',
-  //     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
-  //   },
-  // ]
 
   return (
     <>

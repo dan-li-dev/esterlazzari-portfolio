@@ -213,6 +213,7 @@ export interface Conference {
   attendance: {
     date?: string | null;
     location?: string | null;
+    planned?: boolean | null;
     id?: string | null;
   }[];
   paperLink?: string | null;
@@ -379,6 +380,7 @@ export interface ConferencesSelect<T extends boolean = true> {
     | {
         date?: T;
         location?: T;
+        planned?: T;
         id?: T;
       };
   paperLink?: T;
