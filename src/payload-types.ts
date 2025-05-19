@@ -72,6 +72,7 @@ export interface Config {
     publications: Publication;
     projects: Project;
     conferences: Conference;
+    'media-coverage': MediaCoverage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -83,6 +84,7 @@ export interface Config {
     publications: PublicationsSelect<false> | PublicationsSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     conferences: ConferencesSelect<false> | ConferencesSelect<true>;
+    'media-coverage': MediaCoverageSelect<false> | MediaCoverageSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -219,6 +221,19 @@ export interface Conference {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media-coverage".
+ */
+export interface MediaCoverage {
+  id: string;
+  title: string;
+  publisher: string;
+  link: string;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -243,6 +258,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'conferences';
         value: string | Conference;
+      } | null)
+    | ({
+        relationTo: 'media-coverage';
+        value: string | MediaCoverage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -363,6 +382,18 @@ export interface ConferencesSelect<T extends boolean = true> {
         id?: T;
       };
   paperLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media-coverage_select".
+ */
+export interface MediaCoverageSelect<T extends boolean = true> {
+  title?: T;
+  publisher?: T;
+  link?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

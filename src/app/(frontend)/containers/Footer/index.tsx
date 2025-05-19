@@ -20,32 +20,40 @@ const socialLinks = [
 ]
 
 const Footer = () => (
-  <footer id="footer" className="bg-gray-800 text-white py-16 text-center">
-    <div className="container mx-auto px-4">
+  <footer id="footer" className="bg-gray-900 text-white py-12 text-center">
+    <div className="container mx-auto px-4 flex flex-col items-center space-y-8">
+      {/* Back to Top */}
       <a
         href="#top"
-        className="inline-block mb-8 text-4xl hover:-translate-y-1 transition-transform"
+        aria-label="Back to top"
+        className="text-4xl text-white hover:text-primary transition-colors hover:-translate-y-1 transform duration-200"
       >
         <FaAngleUp />
       </a>
 
-      <div className="flex justify-center space-x-8 text-3xl mb-8">
+      {/* Social Links */}
+      <div className="flex justify-center gap-6 text-2xl">
         {socialLinks.map(({ href, icon }, idx) => (
           <a
             key={idx}
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="hover:-translate-y-1 transition-transform"
+            className="text-white hover:text-primary transition-colors hover:-translate-y-1 transform duration-200"
           >
             {icon}
           </a>
         ))}
       </div>
 
-      <hr className="w-1/2 mx-auto border-gray-600 mb-8" />
+      {/* Divider */}
+      <hr className="w-1/3 border-gray-700" />
 
-      <p className="text-sm text-gray-400">© 2023 - Ester Lazzari</p>
+      {/* Copyright */}
+      <div className="space-y-1 text-sm text-neutral-400">
+        <p>&copy; 2012 – 2025 Ester Lazzari</p>
+        <p>All rights reserved</p>
+      </div>
     </div>
   </footer>
 )

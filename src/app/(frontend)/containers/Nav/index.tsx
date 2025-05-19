@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { IoIosMenu } from 'react-icons/io'
 import { CiSquareRemove } from 'react-icons/ci'
 
@@ -13,71 +12,61 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link
-            className="text-xl font-bold text-primary group transition duration-100"
-            href="#top"
-          >
+          <a href="#top" className="text-xl font-bold text-primary group transition duration-100">
             Ester Lazzari
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-primary"></span>
-          </Link>
+          </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="#about" className="text-foreground hover:text-primary transition">
-              About
-            </Link>
-            <Link href="#research" className="text-foreground hover:text-primary transition">
-              Publications
-            </Link>
-            <Link href="#projects" className="text-foreground hover:text-primary transition">
-              Projects
-            </Link>
-            <Link href="#media" className="text-foreground hover:text-primary transition">
-              Media
-            </Link>
-            <Link href="#footer" className="text-foreground hover:text-primary transition">
-              Contact
-            </Link>
+          <div className="hidden md:flex gap-6">
+            {[
+              ['About', '#about'],
+              ['Publications', '#research'],
+              ['Media', '#media'],
+              ['Projects', '#projects'],
+              ['Conferences', '#conferences'],
+              ['Contact', '#footer'],
+            ].map(([label, href]) => (
+              <a key={href} href={href} className="text-foreground hover:text-primary transition">
+                {label}
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700 hover:text-primary focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <CiSquareRemove className="h-6 w-6" /> : <IoIosMenu className="h-6 w-6" />}
-            </button>
-          </div>
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-gray-700 hover:text-primary focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <CiSquareRemove className="h-6 w-6" /> : <IoIosMenu className="h-6 w-6" />}
+          </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-md">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link
-              href="#about"
-              className="block px-3 py-2 text-gray-700 hover:text-primary transition"
-            >
-              About
-            </Link>
-            {/* <Link href="#projects">
-              <a className="block px-3 py-2 text-gray-700 hover:text-primary transition">
-                Projects
+          <div className="px-4 pt-2 pb-4 space-y-2">
+            {[
+              ['About', '#about'],
+              ['Publications', '#research'],
+              ['Media', '#media'],
+              ['Projects', '#projects'],
+              ['Conferences', '#conferences'],
+              ['Contact', '#footer'],
+            ].map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                onClick={toggleMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition"
+              >
+                {label}
               </a>
-            </Link>
-            <Link href="#conferences">
-              <a className="block px-3 py-2 text-gray-700 hover:text-primary transition">
-                Conferences
-              </a>
-            </Link>
-            <Link href="#contact">
-              <a className="block px-3 py-2 text-gray-700 hover:text-primary transition">Contact</a>
-            </Link> */}
+            ))}
           </div>
         </div>
       )}

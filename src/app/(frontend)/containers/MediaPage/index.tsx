@@ -7,65 +7,69 @@ const Media = async () => {
   const payload = await getPayload({ config: configPromise })
   const countMediaToShow = 4
 
-  //   const mediaQuery = await payload.find({
-  //     collection: 'media',
-  //     depth: 1,
-  //     pagination: false,
-  //     select: {
-  //       title: true,
-  //       publisher: true,
-  //       articleLink: true,
-  //       image: true,
-  //     },
-  //   })
+  const mediaQuery = await payload.find({
+    collection: 'media-coverage',
+    depth: 1,
+    pagination: false,
+    select: {
+      title: true,
+      publisher: true,
+      link: true,
+      image: true,
+    },
+  })
 
-  //   const mediaItems = mediaQuery.docs
-  //   const mediaToShow = mediaItems.slice(0, countMediaToShow)
+  const mediaItems = mediaQuery.docs
+  // const mediaToShow = mediaItems.slice(0, countMediaToShow)
+  const mediaToShow = mediaItems
 
-  const mockMediaItems = [
-    {
-      title: 'Why Fertility Rates Are Falling Around the World',
-      publisher: 'The New York Times',
-      articleLink: 'https://www.nytimes.com/2024/01/12/world/fertility-decline-global.html',
-      image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a', // replace with your CDN or R2 URL
-    },
-    {
-      title: 'The IVF Boom and What It Means for Demography',
-      publisher: 'BBC News',
-      articleLink: 'https://www.bbc.com/news/health-ivf-demographic-shift',
-      image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
-    },
-    {
-      title: 'Europe’s Population Crisis: Can Tech Help?',
-      publisher: 'The Guardian',
-      articleLink:
-        'https://www.theguardian.com/world/2024/apr/15/europe-population-crisis-tech-solutions',
-      image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
-    },
-    {
-      title: 'Academic Spotlight: New Research on Assisted Reproduction Policies',
-      publisher: 'Nature News',
-      articleLink: 'https://www.nature.com/articles/assisted-reproduction-policy-analysis',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
-    },
-  ]
+  // const mockMediaItems = [
+  //   {
+  //     title: 'Why Fertility Rates Are Falling Around the World',
+  //     publisher: 'The New York Times',
+  //     articleLink: 'https://www.nytimes.com/2024/01/12/world/fertility-decline-global.html',
+  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a', // replace with your CDN or R2 URL
+  //   },
+  //   {
+  //     title: 'The IVF Boom and What It Means for Demography',
+  //     publisher: 'BBC News',
+  //     articleLink: 'https://www.bbc.com/news/health-ivf-demographic-shift',
+  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
+  //   },
+  //   {
+  //     title: 'Europe’s Population Crisis: Can Tech Help?',
+  //     publisher: 'The Guardian',
+  //     articleLink:
+  //       'https://www.theguardian.com/world/2024/apr/15/europe-population-crisis-tech-solutions',
+  //     image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
+  //   },
+  //   {
+  //     title: 'Academic Spotlight: New Research on Assisted Reproduction Policies',
+  //     publisher: 'Nature News',
+  //     articleLink: 'https://www.nature.com/articles/assisted-reproduction-policy-analysis',
+  //     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
+  //   },
+  // ]
 
   return (
-    <section id="media" className="scroll-mt-8 bg-background text-foreground pb-[1%]">
-      <div className="container mx-auto px-6 py-1 lg:py-16 lg:px-24">
-        <h2 className="text-4xl font-bold mb-12 text-foreground text-center">Media Coverage</h2>
+    <>
+      {mediaToShow && (
+        <section
+          id="media"
+          className="sm:scroll-mt-16 scroll-mt-8 bg-background text-foreground pb-[1%]"
+        >
+          <div className="container mx-auto px-6 py-1 lg:py-16 lg:px-24">
+            <h2 className="text-4xl font-bold mb-12 text-foreground text-center">Media Coverage</h2>
 
-        {/* <div className="font-semibold">
-          Showing the latest {mediaToShow.length} media mentions of {mediaQuery.totalDocs}.
-        </div> */}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
-          {mockMediaItems.map((item, i) => (
-            <MediaCard key={i} {...item} />
-          ))}
-        </div>
-      </div>
-    </section>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
+              {mediaToShow.map((item, i) => (
+                <MediaCard key={i} {...item} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   )
 }
 

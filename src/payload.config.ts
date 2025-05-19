@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Projects } from './collections/Projects'
 import { Conferences } from './collections/Conferences'
 import { Publications } from './collections/Publications'
+import { MediaCoverage } from './collections/MediaCoverage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -20,8 +21,19 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      title: 'Ester Lazzari admin panel',
+      description: `Ester Lazzari's admin panel`,
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          url: '/favicon.png',
+        },
+      ],
+    },
   },
-  collections: [Media, Users, Publications, Projects, Conferences],
+  collections: [Media, Users, Publications, Projects, Conferences, MediaCoverage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

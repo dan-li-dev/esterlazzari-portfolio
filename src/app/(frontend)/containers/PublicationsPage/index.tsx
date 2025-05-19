@@ -24,22 +24,19 @@ const Publications = async () => {
 
   const publications = publicationsQuery.docs
 
-  const publicationsToShow = publications.slice(0, countPublicationsToShow)
+  // const publicationsToShow = publications.slice(0, countPublicationsToShow)
+  const publicationsToShow = publications
 
   return (
-    <section id="research" className="scroll-mt-8 bg-background text-foreground pb-5 lg:pb-[1%]">
-      <div className="container mx-auto px-6 py-1 lg:py-16 lg:px-24">
-        <h2 className="text-4xl font-bold mb-12 text-foreground text-center">
-          Recent Publications
-        </h2>
+    <section id="research" className="scroll-mt-16 bg-background text-foreground py-12 lg:py-20">
+      <div className="container mx-auto px-6 lg:px-24">
+        <h2 className="text-4xl font-bold text-center mb-8">Recent Publications</h2>
 
-        {/* <PageRange collection="publications" totalDocs={publicationsQuery.totalDocs} /> */}
-        <div className="font-semibold">
-          Showing the latest {publicationsToShow.length} publications of{' '}
-          {publicationsQuery.totalDocs}.
-        </div>
+        <p className="text-center text-sm text-muted-foreground font-medium mb-10">
+          Displaying {publicationsToShow.length} of {publicationsQuery.totalDocs} publications
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {publicationsToShow.map((pub, i) => (
             <PublicationCard key={i} {...pub} />
           ))}

@@ -25,38 +25,39 @@ const PublicationCard = ({
   const formattedDate = date ? formatDateToMonthYear(date) : 'Unknown Date'
 
   return (
-    <div className="bg-card p-6 rounded shadow-sm flex flex-col justify-between min-h-[250px]">
-      <div className="text-left space-y-3">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <h4 className="text-md">{authors}</h4>
-        <h4>
-          <span className="font-semibold">{journal}</span>
-        </h4>
-        <h5 className="text-sm text-muted-foreground">{formattedDate}</h5>
+    <div className="bg-card p-6 rounded-lg shadow-sm flex flex-col justify-between h-full">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold leading-snug">{title}</h3>
+        <p className="text-sm text-muted-foreground">{authors}</p>
+        <p className="text-sm">
+          <span className="font-medium">{journal}</span>
+        </p>
+        <p className="text-xs text-muted-foreground">{formattedDate}</p>
+      </div>
 
-        <div className="flex flex-row gap-2 mt-4">
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href={paperLink || '#'}
+          className="relative inline-block px-4 py-1.5 font-semibold text-primary border-2 border-current group overflow-hidden"
+        >
+          <span className="relative z-10 transition-colors duration-200 group-hover:text-white">
+            See Paper
+          </span>
+          <span className="absolute inset-0 bg-primary -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0" />
+        </a>
+
+        {scholarLink && (
           <a
             rel="noreferrer"
             target="_blank"
-            href={paperLink || '#'}
-            className="relative inline-block px-4 py-1.5 border-current text-primary overflow-hidden group font-bold border-2"
+            href={scholarLink}
+            className="text-sm text-primary hover:underline transition"
           >
-            <span className=" text-[clamp(0.8rem,2vw,1.25rem)] relative z-10 transition-colors duration-200 group-hover:text-white">
-              See Paper
-            </span>
-            <span className="absolute inset-0 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
+            View on Google Scholar
           </a>
-          {scholarLink && (
-            <a
-              rel="noreferrer"
-              target="_blank"
-              href={scholarLink}
-              className="bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent my-auto text-sm"
-            >
-              View on Google Scholar
-            </a>
-          )}
-        </div>
+        )}
       </div>
     </div>
   )

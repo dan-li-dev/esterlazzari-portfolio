@@ -1,19 +1,24 @@
+import { Media } from '@/payload-types'
+
 const MediaCard = ({
   publisher,
   image,
   title,
-  articleLink,
+  link,
 }: {
   publisher: string
-  image: string
+  image: string | Media | undefined | null
   title: string
-  articleLink: string
+  link: string
 }) => {
   return (
     <div className="bg-card p-6 rounded shadow-sm flex flex-col justify-between min-h-[250px]">
       <div className="text-left space-y-3">
         {/* Image */}
-        <img src={image} alt={title} className="w-full h-40 object-cover rounded" />
+
+        {typeof image !== 'string' && image?.url && (
+          <img src={image.url} alt={title} className="w-full h-40 object-cover rounded" />
+        )}
 
         {/* Title */}
         <h3 className="text-lg font-bold">{title}</h3>
@@ -28,7 +33,7 @@ const MediaCard = ({
           <a
             rel="noreferrer"
             target="_blank"
-            href={articleLink || '#'}
+            href={link || '#'}
             className="relative inline-block px-4 py-1.5 border-current text-primary overflow-hidden group font-bold border-2"
           >
             <span className="text-[clamp(0.8rem,2vw,1.25rem)] relative z-10 transition-colors duration-200 group-hover:text-white">
