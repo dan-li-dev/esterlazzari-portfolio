@@ -3,8 +3,15 @@ import type { Metadata } from 'next/types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
+type MediaCoverageItem = {
+  title: string
+  publisher: string
+  link: string
+  image: string
+}
+
 const Media = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayload({ config: configPromise, importMap: {} })
   const countMediaToShow = 4
 
   const mediaQuery = await payload.find({
@@ -22,6 +29,7 @@ const Media = async () => {
   const mediaItems = mediaQuery.docs
   // const mediaToShow = mediaItems.slice(0, countMediaToShow)
   const mediaToShow = mediaItems
+  console.log(mediaToShow)
 
   // const mockMediaItems = [
   //   {
@@ -62,7 +70,7 @@ const Media = async () => {
             <h2 className="text-4xl font-bold mb-12 text-foreground text-center">Media Coverage</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
-              {mediaToShow.map((item, i) => (
+              {mediaToShow.map((item: MediaCoverageItem, i: number) => (
                 <MediaCard key={i} {...item} />
               ))}
             </div>

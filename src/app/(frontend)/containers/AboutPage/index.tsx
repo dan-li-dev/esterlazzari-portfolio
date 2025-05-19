@@ -23,16 +23,24 @@ const About = () => {
 
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <p className="text-md leading-relaxed text-left sm:text-center lg:text-left">
-              I am a postdoctoral research fellow at the University of Vienna, with a PhD in
-              demography from the Australian National University. My research examines the causes
-              and consequences of delayed fertility, with a particular focus on medically assisted
-              reproduction (MAR) and its impact on fertility trends and family size at older ages.
-              <br />
-              <br />I also explore fertility preferences, social norms around childbearing, and the
-              intersection of education and reproductive outcomes. My work has been published in
-              leading demographic and medical journals, including{' '}
-              <em>Population and Development Review</em>, <em>Human Reproduction</em>, and{' '}
-              <em>Population Studies</em>.
+              I am a postdoctoral research fellow and lecturer at the University of Vienna, with a
+              PhD in demography from the Australian National University. My research focuses on the
+              causes and consequences of late fertility, with a particular attention to how assisted
+              reproduction shapes fertility trends. My work has been published in leading
+              demographic and medical journals, including Demography, Population and Development
+              Review, and Human Reproduction.{' '}
+            </p>
+            <p>
+              View my{' '}
+              <a
+                className="underline hover:text-white/80"
+                rel="noreferrer"
+                href="/CV_short.pdf"
+                target="_blank"
+              >
+                CV
+              </a>{' '}
+              for a full overview of my academic background and publications.
             </p>
 
             <div className="mt-6 sm:mt-8 text-left sm:text-center lg:text-left space-y-2">
@@ -41,24 +49,12 @@ const About = () => {
                 <a
                   className="underline hover:text-white/80"
                   rel="noreferrer"
-                  href="https://twitter.com/LazzariEster"
+                  href="https://x.com/LazzariEster"
                   target="_blank"
                 >
-                  Twitter
+                  X
                 </a>{' '}
                 for updates on my latest research.
-              </p>
-              <p>
-                View my{' '}
-                <a
-                  className="underline hover:text-white/80"
-                  rel="noreferrer"
-                  href="/MyCV_web.pdf"
-                  target="_blank"
-                >
-                  CV
-                </a>{' '}
-                for a full overview of my academic background and publications.
               </p>
             </div>
             <AboutButtons />

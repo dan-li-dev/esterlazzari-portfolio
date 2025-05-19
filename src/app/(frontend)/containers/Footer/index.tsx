@@ -28,13 +28,6 @@ const Footer = () => (
   <footer id="footer" className="bg-gray-900 text-white py-12 text-center">
     <div className="container mx-auto px-4 flex flex-col items-center space-y-8">
       {/* Back to Top */}
-      <a
-        href="#top"
-        aria-label="Back to top"
-        className="text-4xl text-white hover:text-primary transition-colors hover:-translate-y-1 transform duration-200"
-      >
-        <FaAngleUp />
-      </a>
 
       {/* Social Links */}
       <div className="flex justify-center gap-6 text-2xl">
