@@ -22,6 +22,7 @@ const Media = async () => {
   const mediaItems = mediaQuery.docs
   // const mediaToShow = mediaItems.slice(0, countMediaToShow)
   const mediaToShow = mediaItems
+  console.log(mediaToShow)
 
   return (
     <>
