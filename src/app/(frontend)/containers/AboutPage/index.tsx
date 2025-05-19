@@ -12,7 +12,7 @@ const About = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex justify-center items-center w-full lg:w-1/2">
             <Image
-              src="https://7agjoirtfflkfyf4.public.blob.vercel-storage.com/Profile-image.png"
+              src="/profile-el.jpg"
               className="rounded-full aspect-square object-cover shadow-lg"
               width={288}
               height={288}
@@ -52,7 +52,7 @@ const About = () => {
                 <a
                   className="underline hover:text-white/80"
                   rel="noreferrer"
-                  href="assets/MyCV_web.pdf"
+                  href="/MyCV_web.pdf"
                   target="_blank"
                 >
                   CV
