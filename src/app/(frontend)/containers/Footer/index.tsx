@@ -1,4 +1,5 @@
 import { FaAngleUp, FaTwitter, FaLinkedin, FaUniversity, FaEnvelope } from 'react-icons/fa'
+import { HiAcademicCap } from 'react-icons/hi'
 
 const socialLinks = [
   {
@@ -12,6 +13,10 @@ const socialLinks = [
   {
     href: 'https://www.wittgensteincentre.org/en/staff/member/lazzari.htm',
     icon: <FaUniversity />,
+  },
+  {
+    href: 'https://scholar.google.es/citations?user=67ezXusAAAAJ&hl=en',
+    icon: <HiAcademicCap />,
   },
   {
     href: 'mailto:ester.lazzari@univie.ac.at',

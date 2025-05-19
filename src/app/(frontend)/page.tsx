@@ -15,16 +15,9 @@ import Conferences from '@/app/(frontend)/containers/ConferencesPage'
 
 import Media from '@/app/(frontend)/containers/MediaPage'
 import { Animations } from './scroll-effect'
-import GA from './components/PageRange/GoogleAnalytics'
+import GA from '@/app/(frontend)/components/GoogleAnalytics'
 
 export default async function HomePage() {
-  // const headers = await getHeaders()
-  // const payloadConfig = await config
-  // const payload = await getPayload({ config: payloadConfig })
-  // const { user } = await payload.auth({ headers })
-
-  // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   return (
     <>
       <Hero />

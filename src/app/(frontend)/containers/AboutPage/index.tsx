@@ -1,5 +1,6 @@
 // import esterImage from '@/assets/ester1.png'
 import Image from 'next/image'
+import AboutButtons from '@/app/(frontend)/components/AboutButtons'
 const About = () => {
   return (
     <section
@@ -60,30 +61,7 @@ const About = () => {
                 for a full overview of my academic background and publications.
               </p>
             </div>
-
-            <div className="flex flex-wrap justify-center gap-1 mt-6 sm:mt-8 sm:gap-4">
-              <a
-                rel="noreferrer"
-                className="bg-white text-primary font-semibold px-6 py-3 rounded hover:bg-white/90 transition"
-                href="#research"
-              >
-                Publications
-              </a>
-              <a
-                rel="noreferrer"
-                className="bg-white text-primary font-semibold px-6 py-3 rounded hover:bg-white/90 transition"
-                href="#projects"
-              >
-                Research Projects
-              </a>
-              <a
-                rel="noreferrer"
-                className="bg-white text-primary font-semibold px-6 py-3 rounded hover:bg-white/90 transition"
-                href="#conferences"
-              >
-                Conferences
-              </a>
-            </div>
+            <AboutButtons />
           </div>
         </div>
       </div>

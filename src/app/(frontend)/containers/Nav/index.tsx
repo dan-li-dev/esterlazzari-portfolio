@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { IoIosMenu } from 'react-icons/io'
 import { CiSquareRemove } from 'react-icons/ci'
+import { scrollToSection, scrollToTop } from '@/app/(frontend)/utils/scroll'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -14,7 +15,10 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <a href="#top" className="text-xl font-bold text-primary group transition duration-100">
+          <a
+            onClick={scrollToTop}
+            className="text-xl font-bold text-primary group cursor-pointer transition duration-100"
+          >
             Ester Lazzari
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-primary"></span>
           </a>
@@ -22,14 +26,18 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6">
             {[
-              ['About', '#about'],
-              ['Publications', '#research'],
-              ['Media', '#media'],
-              ['Projects', '#projects'],
-              ['Conferences', '#conferences'],
-              ['Contact', '#footer'],
+              ['About', 'about'],
+              ['Publications', 'research'],
+              ['Media', 'media'],
+              ['Projects', 'projects'],
+              ['Conferences', 'conferences'],
+              ['Contact', 'footer'],
             ].map(([label, href]) => (
-              <a key={href} href={href} className="text-foreground hover:text-primary transition">
+              <a
+                key={href}
+                onClick={() => scrollToSection(href)}
+                className="text-foreground hover:text-primary cursor-pointer transition"
+              >
                 {label}
               </a>
             ))}
