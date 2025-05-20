@@ -45,14 +45,16 @@ const About = async () => {
             </p>
             <p>
               View my{' '}
-              <a
-                className="underline hover:text-white/80"
-                rel="noreferrer"
-                href={cv.url}
-                target="_blank"
-              >
-                CV
-              </a>{' '}
+              {cv?.url && (
+                <a
+                  className="underline hover:text-white/80"
+                  rel="noreferrer"
+                  href={cv.url}
+                  target="_blank"
+                >
+                  CV
+                </a>
+              )}{' '}
               for a full overview of my academic background and publications.
             </p>
 
