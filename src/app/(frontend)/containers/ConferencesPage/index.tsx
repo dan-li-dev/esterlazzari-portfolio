@@ -26,6 +26,7 @@ const Conferences = async () => {
     limit: 12,
     overrideAccess: false,
     sort: 'name',
+    pagination: false,
     select: {
       name: true,
       attendance: true,

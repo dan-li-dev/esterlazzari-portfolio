@@ -4,10 +4,20 @@ import { useState } from 'react'
 import { IoIosMenu } from 'react-icons/io'
 import { CiSquareRemove } from 'react-icons/ci'
 import { scrollToSection, scrollToTop } from '@/app/(frontend)/utils/scroll'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
+  const handleLogoClick = () => {
+    if (pathname === '/') {
+      scrollToTop()
+    } else {
+      router.push('/')
+    }
+  }
   const toggleMenu = () => setIsOpen(!isOpen)
   const menuItems = [
     ['About', 'about'],
@@ -24,7 +34,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <a
-            onClick={scrollToTop}
+            onClick={handleLogoClick}
             className="text-xl font-bold text-primary group cursor-pointer transition duration-100"
           >
             Ester Lazzari

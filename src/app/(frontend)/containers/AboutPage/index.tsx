@@ -1,7 +1,19 @@
-// import esterImage from '@/assets/ester1.png'
 import Image from 'next/image'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 import AboutButtons from '@/app/(frontend)/components/AboutButtons'
-const About = () => {
+const About = async () => {
+  const payload = await getPayload({ config: configPromise })
+  const mediaQuery = await payload.find({
+    collection: 'media',
+    depth: 1,
+    pagination: false,
+  })
+  const medias = mediaQuery.docs
+
+  const cv = medias.find((media) => media.alt === 'my_CV')
+  const portfolioPicture = medias.find((m) => m.alt === 'about_picture')
+
   return (
     <section
       id="about"
@@ -13,7 +25,7 @@ const About = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex justify-center items-center w-full lg:w-1/2">
             <Image
-              src="/profile-el.jpg"
+              src={portfolioPicture.url}
               className="rounded-full aspect-square object-cover shadow-lg"
               width={288}
               height={288}
@@ -35,7 +47,7 @@ const About = () => {
               <a
                 className="underline hover:text-white/80"
                 rel="noreferrer"
-                href="/CV_short.pdf"
+                href={cv.url}
                 target="_blank"
               >
                 CV

@@ -7,7 +7,6 @@ import { Suspense } from 'react'
 export const dynamic = 'force-dynamic'
 
 import config from '@/payload.config'
-// import './styles.css'
 import Hero from '@/app/(frontend)/containers/HeroPage'
 import About from '@/app/(frontend)/containers/AboutPage'
 import Publications from '@/app/(frontend)/containers/PublicationsPage'

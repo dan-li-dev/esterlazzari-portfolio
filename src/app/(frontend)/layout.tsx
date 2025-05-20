@@ -6,6 +6,7 @@ import Navbar from '@/app/(frontend)/containers/Nav'
 import Footer from '@/app/(frontend)/containers/Footer'
 import { Metadata } from 'next'
 import Head from 'next/head'
+import CookieBanner from '@/app/(frontend)/components/CookieBanner'
 
 const montserrat = Montserrat({
   weight: ['400', '700'],
@@ -54,6 +55,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body>
         <Navbar />
         <main>{children}</main>
+        <CookieBanner />
         <Footer />
       </body>
     </html>
