@@ -1,5 +1,6 @@
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+// import configPromise from '@payload-config'
+// import { getPayload } from 'payload'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
 const formatDateToYear = (dateString: string): string => {
   const date = new Date(dateString)
@@ -18,7 +19,7 @@ const formatConferences = (
 }
 
 const Conferences = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayloadClient()
 
   const conferencesQuery = await payload.find({
     collection: 'conferences',

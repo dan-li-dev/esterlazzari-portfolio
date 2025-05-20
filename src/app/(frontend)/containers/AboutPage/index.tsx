@@ -1,9 +1,8 @@
 import Image from 'next/image'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
 import AboutButtons from '@/app/(frontend)/components/AboutButtons'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 const About = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayloadClient()
   const mediaQuery = await payload.find({
     collection: 'media',
     depth: 1,
@@ -28,8 +27,9 @@ const About = async () => {
               <Image
                 src={portfolioPicture.url}
                 alt={portfolioPicture?.alt ?? 'Portfolio picture'}
-                width={600}
-                height={400}
+                width={288}
+                height={288}
+                className="rounded-full aspect-square object-cover shadow-lg"
               />
             )}
           </div>

@@ -1,11 +1,11 @@
 import PublicationCard from './PublicationCard'
 import type { Metadata } from 'next/types'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import { PageRange } from '@/app/(frontend)/components/PageRange'
+// import configPromise from '@payload-config'
+// import { getPayload } from 'payload'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
 const Publications = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayloadClient()
   const countPublicationsToShow = 4
 
   const publicationsQuery = await payload.find({

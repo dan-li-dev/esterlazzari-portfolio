@@ -1,9 +1,10 @@
 import ProjectCard from './ProjectCard'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+// import configPromise from '@payload-config'
+// import { getPayload } from 'payload'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
 const Projects = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayloadClient()
 
   const projectsQuery = await payload.find({
     collection: 'projects',

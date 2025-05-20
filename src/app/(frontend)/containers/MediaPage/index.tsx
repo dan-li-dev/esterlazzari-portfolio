@@ -1,10 +1,11 @@
 import MediaCard from './MediaCard'
 import type { Metadata } from 'next/types'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+// import configPromise from '@payload-config'
+// import { getPayload } from 'payload'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
 const Media = async () => {
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayloadClient()
   const countMediaToShow = 4
 
   const mediaQuery = await payload.find({
