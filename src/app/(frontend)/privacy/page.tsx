@@ -42,10 +42,10 @@ export default function PrivacyPage() {
         <p>
           If you have questions or requests related to your data, please contact me at{' '}
           <a
-            href="mailto:daniel@example.com"
+            href="mailto:ester.lazzari@univie.ac.at"
             className="text-primary underline hover:text-secondary"
           >
-            daniel@example.com
+            ester.lazzari@univie.ac.at
           </a>
           .
         </p>

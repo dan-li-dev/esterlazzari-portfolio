@@ -1,88 +1,76 @@
-# Payload Blank Starter
+<p align="center">
+  <img src="https://esterlazzari.com/avatar.png" height="96px" width="96px" alt="Ester Lazzari Avatar"/>
+  <br/>
+  <h3 align="center">esterlazzari.com</h3>
+  <p align="center">Academic portfolio and research website for Ester Lazzari.</p>
+</p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/payloadcms/payload/tree/main/templates/with-vercel-mongodb&project-name=payload-project&env=PAYLOAD_SECRET&build-command=pnpm%20run%20ci&stores=%5B%7B%22type%22:%22blob%22%7D%5D&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
+<p align="center">
+  <a href="../../actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/esterlazzari/portfolio/main.yml?branch=main&style=flat-square" />
+  </a>
+  <a href="../../issues">
+    <img src="https://img.shields.io/github/issues/esterlazzari/portfolio.svg?style=flat-square" />
+  </a>
+  <a href="../../pulls">
+    <img src="https://img.shields.io/github/issues-pr/esterlazzari/portfolio.svg?style=flat-square" />
+  </a>
+</p>
 
-This template comes configured with the bare minimum to get started on anything you need.
+## 🧾 Description
 
-## Quick start
+Source code for [esterlazzari.com](https://esterlazzari.com) — an academic portfolio for Ester Lazzari, a demographer specializing in fertility, reproductive technologies, and family dynamics. The website showcases research, publications, conference contributions, and current projects in an accessible and modern interface.
 
-Click the 'Deploy' button above to spin up this template directly into Vercel hosting. It will first prompt you save this template into your own Github repo so that you own the code and can make any changes you want to it.
+Built using a modern JAMstack architecture with:
 
-Set up the following services and secrets and then once the app has been built and deployed you will be able to visit your site at the generated URL.
-From this point on you can access your admin panel at `/admin` of your app URL, create an admin user and then click the 'Seed the database' button in the dashboard to add content into your app.
+<div align="center">
+ <code><img width="70" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
+ <code><img width="70" src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704" alt="Next.js" title="Next.js"/></code>
+   <code><img width="70" src="https://i.imgur.com/i6ruAIh.png" alt="Payload CMS" title="Payload CMS"/></code>
+ <code><img width="70" src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="TypeScript" title="TypeScript"/></code>
+ <code><img width="70" src="https://user-images.githubusercontent.com/860434/241059246-cd41613c-23fd-4e11-92a6-927f72b7e872.png" alt="Tailwind CSS" title="Tailwind CSS"/></code>
+</div>
 
-### Services
+---
 
-This project uses the following services integrated into Vercel which you will need to click "Add" and "Connect" for:
+## 🚀 Available Scripts
 
-Mongo Atlas - MongoDB-based cloud database used to host your data
+### App
 
-Vercel Blob Storage - object storage used to host your files such as images and videos
+#### `yarn dev`
 
-The connection variables will automatically be setup for you on Vercel when these services are connected.
+Start the app in development mode at [http://localhost:3000](http://localhost:3000).<br />
+Hot-reloads on code changes.
 
-#### Secrets
+#### `yarn build`
 
-You will be prompted to add the following secret values to your project. These should be long unguessable strong passwords, you can also use a password manager to generate one for these.
+Compiles the app for production using Next.js optimizations.
 
-PAYLOAD_SECRET - used by Payload to sign secrets like JWT tokens
+#### `yarn start`
 
-## Quick Start - local setup
+Runs the production build using the default Next.js server.
 
-To spin up this template locally, follow these steps:
+#### `yarn start-server`
 
-### Clone
+Starts the app in production mode using a custom Node.js server.
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+#### `yarn lint`
 
-### Development
+Runs ESLint for code quality checks.
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URI` and `BLOB_READ_WRITE_TOKEN` from your Vercel project to your `.env` if you want to use Vercel Blob and the Neon database that was created for you.
+#### `yarn clean`
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+Removes `.next`, `node_modules`, and other generated directories.
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+---
 
-#### Docker (Optional)
+## 🤝 Contributions
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+Academic or design contributions to improve accessibility, structure, or content are welcome.<br />
+Feel free to fork and submit a [pull request](../../pulls).
 
-To do so, follow these steps:
+---
 
-- Modify the `MONGODB_URI` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URI` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+## 📜 License
 
-## How it works
-
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
-
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled collections that have access to the admin panel.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+All rights reserved. Please contact Ester Lazzari for reuse or collaborations.
