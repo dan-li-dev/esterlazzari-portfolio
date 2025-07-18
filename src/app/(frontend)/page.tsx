@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
-import { Suspense } from 'react'
 export const dynamic = 'force-dynamic'
 
 import config from '@/payload.config'
@@ -29,9 +28,7 @@ export default async function HomePage() {
       <Hero />
       <About />
       <Publications />
-      <Suspense fallback={<div>Loading Media...</div>}>
         <Media />
-      </Suspense>
       <Projects />
       <Conferences />
       <GA />

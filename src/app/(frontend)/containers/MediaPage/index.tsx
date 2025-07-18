@@ -3,6 +3,8 @@ import type { Metadata } from 'next/types'
 // import configPromise from '@payload-config'
 // import { getPayload } from 'payload'
 import { getPayloadClient } from '@/app/(frontend)/lib/payload'
+import {use} from 'react';
+
 
 const Media = async () => {
   const payload = await getPayloadClient()

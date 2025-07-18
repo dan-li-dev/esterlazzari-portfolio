@@ -72,8 +72,10 @@ const Navbar = () => {
             {menuItems.map(([label, href]) => (
               <a
                 key={href}
-                href={href}
-                onClick={toggleMenu}
+                onClick={() => {
+                  scrollToSection(href)
+                  toggleMenu()
+                }}
                 className="block px-3 py-2 text-gray-700 hover:text-primary transition"
               >
                 {label}

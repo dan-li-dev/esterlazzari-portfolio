@@ -24,13 +24,14 @@ const About = async () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex justify-center items-center w-full lg:w-1/2">
             {portfolioPicture?.url && (
+              <div className="relative w-40 sm:w-48 md:w-56 lg:w-72 aspect-square">
               <Image
                 src={portfolioPicture.url}
                 alt={portfolioPicture?.alt ?? 'Portfolio picture'}
-                width={288}
-                height={288}
-                className="rounded-full aspect-square object-cover shadow-lg"
+                fill
+                className="rounded-full object-cover shadow-lg"
               />
+              </div>
             )}
           </div>
 
