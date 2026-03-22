@@ -1,7 +1,9 @@
+import type { SerializedEditorState } from 'lexical'
+
 type ProjectCardProps = {
   title: string
   status: string
-  description?: any
+  description?: SerializedEditorState
   paperLink?: string
 }
 import { RichText } from '@payloadcms/richtext-lexical/react'

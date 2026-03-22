@@ -1,4 +1,5 @@
-import { Media } from '@/payload-types'
+import Image from 'next/image'
+import type { Media } from '@/payload-types'
 
 const MediaCard = ({
   publisher,
@@ -17,7 +18,9 @@ const MediaCard = ({
         {/* Image */}
 
         {typeof image !== 'string' && image?.url && (
-          <img src={image.url} alt={title} className="w-full h-80 object-cover rounded" />
+          <div className="relative w-full h-80">
+            <Image src={image.url} alt={title} fill className="object-cover rounded" />
+          </div>
         )}
 
         {/* Title */}

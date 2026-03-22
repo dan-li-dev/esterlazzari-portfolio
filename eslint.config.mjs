@@ -11,27 +11,51 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
+
   {
     rules: {
-      '@typescript-eslint/ban-ts-comment': 'warn',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
+      // TypeScript
+      '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': [
-        'warn',
+        'error',
         {
           vars: 'all',
           args: 'after-used',
-          ignoreRestSiblings: false,
+          ignoreRestSiblings: true,
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
           destructuredArrayIgnorePattern: '^_',
           caughtErrorsIgnorePattern: '^(_|ignore)',
         },
       ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+      ],
+      '@typescript-eslint/ban-ts-comment': [
+        'warn',
+        { 'ts-ignore': 'allow-with-description', minimumDescriptionLength: 10 },
+      ],
+      '@typescript-eslint/no-empty-object-type': 'warn',
+
+      // JavaScript best practices
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+
+      // React
+      'react/self-closing-comp': ['error', { component: true, html: true }],
+      'react-hooks/exhaustive-deps': 'error',
     },
   },
+
   {
-    ignores: ['.next/'],
+    ignores: ['.next/', 'node_modules/', 'src/payload-types.ts'],
+  },
+  {
+    files: ['src/scripts/**/*'],
+    rules: { 'no-console': 'off' },
   },
 ]
 

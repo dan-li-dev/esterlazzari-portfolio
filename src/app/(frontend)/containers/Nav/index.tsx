@@ -6,7 +6,20 @@ import { CiSquareRemove } from 'react-icons/ci'
 import { scrollToSection, scrollToTop } from '@/app/(frontend)/utils/scroll'
 import { usePathname, useRouter } from 'next/navigation'
 
-const Navbar = () => {
+const ALL_MENU_ITEMS: [string, string, string?][] = [
+  ['About', 'about'],
+  ['Publications', 'research', 'publications'],
+  ['Media', 'media', 'media'],
+  ['Projects', 'projects', 'projects'],
+  ['Conferences', 'conferences'],
+  ['Contact', 'footer'],
+]
+
+type NavbarProps = {
+  hiddenSections?: string[]
+}
+
+const Navbar = ({ hiddenSections = [] }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -18,15 +31,12 @@ const Navbar = () => {
       router.push('/')
     }
   }
+
   const toggleMenu = () => setIsOpen(!isOpen)
-  const menuItems = [
-    ['About', 'about'],
-    ['Publications', 'research'],
-    ['Media', 'media'],
-    // ['Projects', 'projects'],
-    ['Conferences', 'conferences'],
-    ['Contact', 'footer'],
-  ]
+
+  const menuItems = ALL_MENU_ITEMS.filter(
+    ([, , sectionKey]) => !sectionKey || !hiddenSections.includes(sectionKey),
+  )
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -38,7 +48,7 @@ const Navbar = () => {
             className="text-xl font-bold text-primary group cursor-pointer transition duration-100"
           >
             Ester Lazzari
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-primary"></span>
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-primary" />
           </a>
 
           {/* Desktop Menu */}

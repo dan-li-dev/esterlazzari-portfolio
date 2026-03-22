@@ -2,9 +2,9 @@ import React from 'react'
 import './styles.css'
 
 import { Montserrat } from 'next/font/google'
-import Navbar from '@/app/(frontend)/containers/Nav'
+import NavWrapper from '@/app/(frontend)/containers/Nav/NavWrapper'
 import Footer from '@/app/(frontend)/containers/Footer'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Head from 'next/head'
 import CookieBanner from '@/app/(frontend)/components/CookieBanner'
 
@@ -53,7 +53,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       </Head>
 
       <body>
-        <Navbar />
+        <NavWrapper />
         <main>{children}</main>
         <CookieBanner />
         <Footer />

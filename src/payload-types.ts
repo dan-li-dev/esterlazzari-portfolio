@@ -73,6 +73,7 @@ export interface Config {
     projects: Project;
     conferences: Conference;
     'media-coverage': MediaCoverage;
+    'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,19 +86,30 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     conferences: ConferencesSelect<false> | ConferencesSelect<true>;
     'media-coverage': MediaCoverageSelect<false> | MediaCoverageSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  fallbackLocale: null;
+  globals: {
+    'about-section': AboutSection;
+    'footer-settings': FooterSetting;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'about-section': AboutSectionSelect<false> | AboutSectionSelect<true>;
+    'footer-settings': FooterSettingsSelect<false> | FooterSettingsSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
-  user: User & {
-    collection: 'users';
+  widgets: {
+    collections: CollectionsWidget;
   };
+  user: User;
   jobs: {
     tasks: unknown;
     workflows: unknown;
@@ -126,7 +138,7 @@ export interface UserAuthOperations {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -145,7 +157,7 @@ export interface Media {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -155,19 +167,27 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "publications".
  */
 export interface Publication {
-  id: string;
+  id: number;
   title: string;
   authors: string;
   journal?: string | null;
   date?: string | null;
-  pdf?: (string | null) | Media;
+  pdf?: (number | null) | Media;
   paperLink?: string | null;
   scholarLink?: string | null;
   updatedAt: string;
@@ -178,7 +198,7 @@ export interface Publication {
  * via the `definition` "projects".
  */
 export interface Project {
-  id: string;
+  id: number;
   title: string;
   pin?: boolean | null;
   status: string;
@@ -186,7 +206,7 @@ export interface Project {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -198,7 +218,7 @@ export interface Project {
     [k: string]: unknown;
   } | null;
   date?: string | null;
-  pdf?: (string | null) | Media;
+  pdf?: (number | null) | Media;
   paperLink?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -208,7 +228,7 @@ export interface Project {
  * via the `definition` "conferences".
  */
 export interface Conference {
-  id: string;
+  id: number;
   name: string;
   attendance: {
     date?: string | null;
@@ -225,49 +245,66 @@ export interface Conference {
  * via the `definition` "media-coverage".
  */
 export interface MediaCoverage {
-  id: string;
+  id: number;
   title: string;
   publisher: string;
   link: string;
-  image: string | Media;
+  image: number | Media;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
       } | null)
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'publications';
-        value: string | Publication;
+        value: number | Publication;
       } | null)
     | ({
         relationTo: 'projects';
-        value: string | Project;
+        value: number | Project;
       } | null)
     | ({
         relationTo: 'conferences';
-        value: string | Conference;
+        value: number | Conference;
       } | null)
     | ({
         relationTo: 'media-coverage';
-        value: string | MediaCoverage;
+        value: number | MediaCoverage;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -277,10 +314,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -300,7 +337,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -338,6 +375,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -401,6 +445,14 @@ export interface MediaCoverageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -430,6 +482,138 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-section".
+ */
+export interface AboutSection {
+  id: number;
+  bio: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  cv?: (number | null) | Media;
+  twitterUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-settings".
+ */
+export interface FooterSetting {
+  id: number;
+  socialLinks?:
+    | {
+        platform:
+          | 'twitter'
+          | 'bluesky'
+          | 'linkedin'
+          | 'university'
+          | 'googleScholar'
+          | 'researchgate'
+          | 'orcid'
+          | 'github'
+          | 'instagram'
+          | 'email';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * How many publications to show on the homepage. Sorted by most recent date.
+   */
+  publicationsPerPage?: number | null;
+  /**
+   * Control visibility and order of the Publications, Media, and Projects sections.
+   */
+  sections?:
+    | {
+        section: 'publications' | 'media' | 'projects';
+        visible?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-section_select".
+ */
+export interface AboutSectionSelect<T extends boolean = true> {
+  bio?: T;
+  cv?: T;
+  twitterUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-settings_select".
+ */
+export interface FooterSettingsSelect<T extends boolean = true> {
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  publicationsPerPage?: T;
+  sections?:
+    | T
+    | {
+        section?: T;
+        visible?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collections_widget".
+ */
+export interface CollectionsWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'full';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

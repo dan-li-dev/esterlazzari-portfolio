@@ -4,7 +4,7 @@ import { scrollToSection } from '@/app/(frontend)/utils/scroll'
 
 const buttons = [
   { label: 'Know More', href: 'about' },
-  { label: 'Media Mentions', href: 'media' },
+  { label: 'Contact Me', href: 'footer' },
 ]
 
 export default function HeroButtons() {

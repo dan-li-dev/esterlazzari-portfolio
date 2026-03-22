@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 // Extend the Window interface to include the gtag function
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void
+    gtag: (...args: unknown[]) => void
   }
 }
 import Script from 'next/script'

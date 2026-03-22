@@ -2,21 +2,6 @@
 // import { getPayload } from 'payload'
 import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
-const formatDateToYear = (dateString: string): string => {
-  const date = new Date(dateString)
-  return date.toLocaleString('en-US', {
-    // month: 'long',
-    year: 'numeric',
-  })
-}
-
-const formatConferences = (
-  conferences: { id: string; date: string; location: string }[],
-): string => {
-  return conferences
-    .map(({ date, location }) => `${formatDateToYear(date)} - ${location}`)
-    .join(', ')
-}
 
 const Conferences = async () => {
   const payload = await getPayloadClient()

@@ -1,7 +1,6 @@
 'use client'
 
 import CookieConsent from 'react-cookie-consent'
-import Link from 'next/link'
 
 const CookieBanner = () => {
   return (
