@@ -10,7 +10,7 @@
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation eslint src",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "seed": "cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx --env-file=.env src/scripts/seed.ts && cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx --env-file=.env src/scripts/seed-about.ts && cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx --env-file=.env src/scripts/seed-media-coverage.ts && cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx --env-file=.env src/scripts/seed-footer.ts && cross-env NODE_ENV=development NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx --env-file=.env src/scripts/seed-site-settings.ts",
     "seed:reset": "rm -f local.db && pnpm seed",

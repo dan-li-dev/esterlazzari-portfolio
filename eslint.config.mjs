@@ -1,20 +1,32 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import nextConfig from 'eslint-config-next/core-web-vitals'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
+// eslint-config-next/core-web-vitals includes a 'next/typescript' entry that
+// registers the @typescript-eslint plugin. Extract it so we can reuse the
+// same plugin instance in our own rules block.
+const tsEntry = nextConfig.find((c) => c.plugins?.['@typescript-eslint'])
+const tsPlugin = tsEntry?.plugins?.['@typescript-eslint']
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextConfig,
 
   {
     rules: {
-      // TypeScript
+      // JavaScript best practices
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+
+      // React
+      'react/self-closing-comp': ['error', { component: true, html: true }],
+      'react-hooks/exhaustive-deps': 'error',
+    },
+  },
+
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    ...(tsPlugin ? { plugins: { '@typescript-eslint': tsPlugin } } : {}),
+    rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -37,16 +49,6 @@ const eslintConfig = [
         { 'ts-ignore': 'allow-with-description', minimumDescriptionLength: 10 },
       ],
       '@typescript-eslint/no-empty-object-type': 'warn',
-
-      // JavaScript best practices
-      'prefer-const': 'error',
-      'no-var': 'error',
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      eqeqeq: ['error', 'always', { null: 'ignore' }],
-
-      // React
-      'react/self-closing-comp': ['error', { component: true, html: true }],
-      'react-hooks/exhaustive-deps': 'error',
     },
   },
 
