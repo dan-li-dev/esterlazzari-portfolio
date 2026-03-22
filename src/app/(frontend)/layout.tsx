@@ -7,6 +7,7 @@ import Footer from '@/app/(frontend)/containers/Footer'
 import type { Metadata } from 'next'
 import Head from 'next/head'
 import CookieBanner from '@/app/(frontend)/components/CookieBanner'
+import { Analytics } from '@vercel/analytics/next'
 
 const montserrat = Montserrat({
   weight: ['400', '700'],
@@ -57,6 +58,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <main>{children}</main>
         <CookieBanner />
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
