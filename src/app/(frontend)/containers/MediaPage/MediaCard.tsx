@@ -8,7 +8,7 @@ const MediaCard = ({
   link,
 }: {
   publisher: string
-  image: string | Media | undefined | null
+  image: number | string | Media | undefined | null
   title: string
   link: string
 }) => {
@@ -17,7 +17,7 @@ const MediaCard = ({
       <div className="text-left space-y-3">
         {/* Image */}
 
-        {typeof image !== 'string' && image?.url && (
+        {typeof image !== 'string' && typeof image !== 'number' && image?.url && (
           <div className="relative w-full h-80">
             <Image src={image.url} alt={title} fill className="object-cover rounded" />
           </div>

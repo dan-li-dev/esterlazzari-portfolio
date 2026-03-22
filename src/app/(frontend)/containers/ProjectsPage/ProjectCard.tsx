@@ -3,7 +3,7 @@ import type { SerializedEditorState } from 'lexical'
 type ProjectCardProps = {
   title: string
   status: string
-  description?: SerializedEditorState
+  description?: SerializedEditorState | null
   paperLink?: string
 }
 import { RichText } from '@payloadcms/richtext-lexical/react'
@@ -14,7 +14,7 @@ const ProjectCard = ({ title, status, description, paperLink }: ProjectCardProps
       <div className="space-y-3">
         <h3 className="text-xl font-semibold">{title}</h3>
         <p className="text-sm text-muted-foreground">{status}</p>
-        <RichText data={description} />
+        {description && <RichText data={description} />}
 
         {paperLink && (
           <p className="text-sm">

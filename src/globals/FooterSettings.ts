@@ -29,7 +29,7 @@ export const FooterSettings: GlobalConfig = {
           type: 'select',
           label: 'Platform',
           required: true,
-          options: SOCIAL_PLATFORMS,
+          options: [...SOCIAL_PLATFORMS],
         },
         {
           name: 'url',

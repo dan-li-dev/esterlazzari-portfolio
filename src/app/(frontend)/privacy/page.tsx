@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 export default function PrivacyPage() {
   return (
     <main className="bg-background text-foreground min-h-screen py-16 px-6 sm:px-12 max-w-3xl mx-auto">
