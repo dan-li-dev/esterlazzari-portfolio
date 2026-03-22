@@ -115,8 +115,13 @@ describe('About server component', () => {
     const portfolioPic = { alt: 'about_picture', url: 'https://example.com/photo.jpg' }
     vi.mocked(getPayloadClient).mockResolvedValue(
       createMockPayload({
-        find: vi.fn().mockResolvedValue({ docs: [portfolioPic] }),
-        findGlobal: vi.fn().mockResolvedValue({ bio: mockBio, cv: null, twitterUrl: null }),
+        find: vi.fn().mockResolvedValue({ docs: [] }),
+        findGlobal: vi.fn().mockResolvedValue({
+          bio: mockBio,
+          cv: null,
+          twitterUrl: null,
+          profilePicture: portfolioPic,
+        }),
       }) as never,
     )
     const jsx = await About()

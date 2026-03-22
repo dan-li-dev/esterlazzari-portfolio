@@ -7,6 +7,15 @@ export const AboutSection: GlobalConfig = {
   },
   fields: [
     {
+      name: 'profilePicture',
+      label: 'Profile Picture',
+      type: 'upload',
+      relationTo: 'media',
+      filterOptions: {
+        mimeType: { contains: 'image' },
+      },
+    },
+    {
       name: 'bio',
       type: 'richText',
       required: true,

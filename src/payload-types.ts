@@ -489,6 +489,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface AboutSection {
   id: number;
+  profilePicture?: (number | null) | Media;
   bio: {
     root: {
       type: string;
@@ -564,6 +565,7 @@ export interface SiteSetting {
  * via the `definition` "about-section_select".
  */
 export interface AboutSectionSelect<T extends boolean = true> {
+  profilePicture?: T;
   bio?: T;
   cv?: T;
   twitterUrl?: T;

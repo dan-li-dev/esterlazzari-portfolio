@@ -6,12 +6,10 @@ import RichText from '@/app/(frontend)/components/RichText'
 const About = async () => {
   const payload = await getPayloadClient()
 
-  const [mediaQuery, aboutSection] = await Promise.all([
-    payload.find({ collection: 'media', depth: 1, pagination: false }),
-    payload.findGlobal({ slug: 'about-section', depth: 1 }),
-  ])
+  const aboutSection = await payload.findGlobal({ slug: 'about-section', depth: 1 })
 
-  const portfolioPicture = mediaQuery.docs.find((m) => m.alt === 'about_picture')
+  const portfolioPicture =
+    typeof aboutSection?.profilePicture === 'object' ? aboutSection.profilePicture : null
   const cv = typeof aboutSection?.cv === 'object' ? aboutSection.cv : null
   const twitterUrl = aboutSection?.twitterUrl
 
