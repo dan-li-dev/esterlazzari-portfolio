@@ -26,7 +26,7 @@ const Projects = async () => {
     projectsToShow.length > 0 && (
       <section id="projects" className="scroll-mt-16 bg-background text-foreground py-12 lg:py-20">
         <div className="container mx-auto px-6 lg:px-24">
-          <h2 className="text-4xl font-bold text-center mb-12">Current Projects</h2>
+          <h2 className="text-4xl text-center mb-12">Current Projects</h2>
 
           <div className="flex flex-col items-center gap-12">
             {projectsToShow.map((project, idx) => (

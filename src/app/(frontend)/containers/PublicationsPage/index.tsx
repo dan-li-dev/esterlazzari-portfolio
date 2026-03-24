@@ -27,7 +27,7 @@ const Publications = async () => {
   return (
     <section id="research" className="scroll-mt-16 bg-background text-foreground py-12 lg:py-20">
       <div className="container mx-auto px-6 lg:px-24">
-        <h2 className="text-4xl font-bold text-center mb-8">Publications</h2>
+        <h2 className="text-4xl text-center mb-8">Publications</h2>
         <PublicationsList publications={publicationsQuery.docs} perPage={perPage} />
       </div>
     </section>

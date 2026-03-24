@@ -17,43 +17,85 @@ html {
     font-weight: unset;
   }
 
+  /* Serif headings — DM Serif Display, normal weight (no bold) */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif, Georgia, serif);
+    font-weight: 400 !important;
+    line-height: 1.2;
+  }
+
+  /* Sans subheadings — DM Sans, semibold */
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 600;
+  }
+
   :root {
-    /* Soft background with subtle color */
-    --background: 210 20% 96%; /* soft gray-blue */
-    --foreground: 240 10% 10%; /* near-black but not fully black */
+    /* Warm off-white background */
+    --background: 60 14% 97%; /* #FAFAF7 */
+    --foreground: 70 4% 10%; /* #1A1A18 near-black */
 
-    /* Cards & containers (slightly lifted tone) */
-    --card: 210 25% 92%; /* subtle lift from background */
-    --card-foreground: 240 15% 15%; /* readable deep navy */
+    /* Cards */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 70 4% 10%; /* #1A1A18 */
 
-    --popover: 210 20% 98%; /* barely lighter than background */
-    --popover-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 70 4% 10%;
 
-    /* Branding (keep as-is if consistent) */
-    --primary: 182.7 97.8% 34.9%; /* turquoise */
-    --primary-foreground: 0 0% 100%; /* white text on primary */
+    /* Primary — forest green accent */
+    --primary: 160 38% 27%; /* #2B5F4E */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 165.7 100% 40.2%; /* mint green */
-    --secondary-foreground: 0 0% 100%; /* white text on secondary */
+    /* Secondary — light green tint */
+    --secondary: 150 18% 93%; /* #E8F0EC */
+    --secondary-foreground: 159 39% 19%; /* #1E4538 */
 
     /* Supporting UI colors */
-    --muted: 210 15% 85%;
-    --muted-foreground: 215.4 12% 30%;
+    --muted: 50 11% 93%; /* #F0EFEA */
+    --muted-foreground: 60 3% 34%; /* #5A5A55 */
 
-    --accent: 210 40% 94%;
-    --accent-foreground: 240 10% 20%;
+    --accent: 150 18% 93%; /* #E8F0EC */
+    --accent-foreground: 160 38% 27%; /* #2B5F4E */
 
-    --destructive: 0 70% 55%;
+    --destructive: 16 52% 50%; /* #C75B3A coral */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 10% 75%;
-    --input: 210 20% 92%;
-    --ring: 240 10% 20%;
+    --border: 50 8% 90%; /* #E8E7E2 */
+    --input: 50 8% 90%;
+    --ring: 160 38% 27%; /* #2B5F4E */
 
     /* Semantic */
     --success: 158 45% 55%;
     --warning: 34 89% 65%;
-    --error: 10 100% 65%;
+    --error: 16 52% 50%;
+
+    /* Design tokens */
+    --radius: 12px;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-foreground font-semibold;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 1px;
   }
 }
 
@@ -77,9 +119,15 @@ html {
   }
   body {
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
-/* 
+
+/*
 html {
   opacity: 0;
 } */

@@ -20,7 +20,7 @@ const About = async () => {
   clip-path-about min-h-[100vh] sm:min-h-[110vh] md:min-h-[90vh]"
     >
       <div className="container mx-auto px-6 py-16 lg:px-24">
-        <h2 className="text-4xl font-bold text-center mb-6">About Me</h2>
+        <h2 className="text-4xl text-center mb-6">About Me</h2>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex justify-center items-center w-full lg:w-1/2">
             <div className="relative w-40 sm:w-48 md:w-56 lg:w-72 aspect-square">

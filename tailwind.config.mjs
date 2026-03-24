@@ -94,8 +94,9 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
+        sans: ['var(--font-sans)', '-apple-system', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
       },
       keyframes: {
         'accordion-down': {

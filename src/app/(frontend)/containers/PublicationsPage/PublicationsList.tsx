@@ -41,6 +41,7 @@ const PublicationsList = ({ publications, perPage }: Props) => {
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
+            suppressHydrationWarning
             className="px-4 py-2 text-sm font-semibold border-2 border-current text-primary disabled:opacity-30 disabled:cursor-not-allowed relative overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-200 group-hover:text-white group-disabled:group-hover:text-primary">
@@ -56,6 +57,7 @@ const PublicationsList = ({ publications, perPage }: Props) => {
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
+            suppressHydrationWarning
             className="px-4 py-2 text-sm font-semibold border-2 border-current text-primary disabled:opacity-30 disabled:cursor-not-allowed relative overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-200 group-hover:text-white group-disabled:group-hover:text-primary">

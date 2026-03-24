@@ -1,16 +1,24 @@
 import React from 'react'
 import './styles.css'
 
-import { Montserrat } from 'next/font/google'
+import { DM_Sans, DM_Serif_Display } from 'next/font/google'
 import NavWrapper from '@/app/(frontend)/containers/Nav/NavWrapper'
 import Footer from '@/app/(frontend)/containers/Footer'
 import type { Metadata } from 'next'
 import CookieBanner from '@/app/(frontend)/components/CookieBanner'
 import { Analytics } from '@vercel/analytics/next'
 
-const montserrat = Montserrat({
-  weight: ['400', '700'],
+const dmSans = DM_Sans({
   subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const dmSerifDisplay = DM_Serif_Display({
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-serif',
   display: 'swap',
 })
 
@@ -18,8 +26,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en" className={montserrat.className} suppressHydrationWarning>
-      <body>
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${dmSerifDisplay.variable}`}
+      suppressHydrationWarning
+    >
+      <body suppressHydrationWarning>
         <NavWrapper />
         <main>{children}</main>
         <CookieBanner />

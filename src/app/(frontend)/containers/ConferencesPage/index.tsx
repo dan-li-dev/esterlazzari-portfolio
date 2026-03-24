@@ -27,7 +27,7 @@ const Conferences = async () => {
       className="bg-gradient-to-br from-primary to-secondary text-white py-32 mb-0 clip-path-conferences"
     >
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-12">Conferences</h2>
+        <h2 className="text-4xl mb-12">Conferences</h2>
         <div className="flex flex-col gap-6 text-center text-lg md:text-xl max-w-4xl mx-auto">
           {conferences.map((conf, idx) => (
             <div key={idx}>
