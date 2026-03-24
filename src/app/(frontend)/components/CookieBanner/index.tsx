@@ -6,47 +6,44 @@ const CookieBanner = () => {
   return (
     <CookieConsent
       location="bottom"
-      buttonText="Accept all"
+      buttonText="Accept"
       declineButtonText="Decline"
       enableDeclineButton
-      //   debug={true}
       cookieName="site-consent"
-      //   onDecline={() => {
-      //     alert('nay!')
-      //   }}
       style={{
-        background: 'hsl(210 25% 92%)', // --card
-        color: 'hsl(240 15% 15%)', // --card-foreground
-        textAlign: 'left',
-        padding: '1rem',
-        fontSize: '1rem',
+        background: 'hsl(0 0% 100%)',
+        color: 'hsl(70 4% 10%)',
+        borderTop: '1px solid hsl(50 8% 90%)',
+        padding: '1rem 1.5rem',
+        fontSize: '0.875rem',
+        fontFamily: 'var(--font-sans, sans-serif)',
+        alignItems: 'center',
       }}
       buttonStyle={{
-        background: 'hsl(182.7 97.8% 34.9%)', // --primary
-        color: 'hsl(0 0% 100%)', // --primary-foreground
-        borderRadius: '0.375rem',
-        padding: '0.5rem 1rem',
-        marginLeft: '1rem',
+        background: 'hsl(160 38% 27%)',
+        color: 'hsl(0 0% 100%)',
+        borderRadius: '9999px',
+        padding: '0.4rem 1.1rem',
+        fontSize: '0.8rem',
         fontWeight: '500',
+        fontFamily: 'var(--font-sans, sans-serif)',
+        margin: '0 0 0 0.75rem',
       }}
       declineButtonStyle={{
-        background: 'hsl(210 15% 85%)', // --muted
-        color: 'hsl(215.4 12% 30%)', // --muted-foreground
-        borderRadius: '0.375rem',
-        padding: '0.5rem 1rem',
-        marginLeft: '1rem',
+        background: 'transparent',
+        color: 'hsl(60 3% 34%)',
+        border: '1px solid hsl(50 8% 90%)',
+        borderRadius: '9999px',
+        padding: '0.4rem 1.1rem',
+        fontSize: '0.8rem',
         fontWeight: '500',
+        fontFamily: 'var(--font-sans, sans-serif)',
+        margin: '0 0 0 0.75rem',
       }}
       expires={180}
     >
       This website uses cookies to enhance the user experience. Read our{' '}
-      <a
-        href="/privacy"
-        style={{
-          color: 'hsl(182.7 97.8% 34.9%)', // --primary
-          textDecoration: 'underline',
-        }}
-      >
+      <a href="/privacy" style={{ color: 'hsl(160 38% 27%)', textDecoration: 'underline' }}>
         privacy policy
       </a>
       .

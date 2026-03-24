@@ -18,6 +18,16 @@ export const SiteSettings: GlobalConfig = {
       },
     },
     {
+      name: 'cookieBannerEnabled',
+      type: 'checkbox',
+      label: 'Show cookie consent banner',
+      defaultValue: false,
+      admin: {
+        description:
+          'Display a cookie consent banner to visitors. Only enable if you are collecting cookies or running analytics that require consent.',
+      },
+    },
+    {
       name: 'publicationsKeywordFilter',
       type: 'checkbox',
       label: 'Enable keyword filtering on publications',

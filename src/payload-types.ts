@@ -92,7 +92,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   fallbackLocale: null;
   globals: {
@@ -138,7 +138,7 @@ export interface UserAuthOperations {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -157,7 +157,7 @@ export interface Media {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -182,12 +182,12 @@ export interface User {
  * via the `definition` "publications".
  */
 export interface Publication {
-  id: number;
+  id: string;
   title: string;
   authors: string;
   journal?: string | null;
   date?: string | null;
-  pdf?: (number | null) | Media;
+  pdf?: (string | null) | Media;
   paperLink?: string | null;
   scholarLink?: string | null;
   updatedAt: string;
@@ -198,7 +198,7 @@ export interface Publication {
  * via the `definition` "projects".
  */
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   pin?: boolean | null;
   status: string;
@@ -218,7 +218,7 @@ export interface Project {
     [k: string]: unknown;
   } | null;
   date?: string | null;
-  pdf?: (number | null) | Media;
+  pdf?: (string | null) | Media;
   paperLink?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -228,7 +228,7 @@ export interface Project {
  * via the `definition` "conferences".
  */
 export interface Conference {
-  id: number;
+  id: string;
   name: string;
   attendance: {
     date?: string | null;
@@ -245,11 +245,11 @@ export interface Conference {
  * via the `definition` "media-coverage".
  */
 export interface MediaCoverage {
-  id: number;
+  id: string;
   title: string;
   publisher: string;
   link: string;
-  image: number | Media;
+  image: string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -258,7 +258,7 @@ export interface MediaCoverage {
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: number;
+  id: string;
   key: string;
   data:
     | {
@@ -275,36 +275,36 @@ export interface PayloadKv {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'publications';
-        value: number | Publication;
+        value: string | Publication;
       } | null)
     | ({
         relationTo: 'projects';
-        value: number | Project;
+        value: string | Project;
       } | null)
     | ({
         relationTo: 'conferences';
-        value: number | Conference;
+        value: string | Conference;
       } | null)
     | ({
         relationTo: 'media-coverage';
-        value: number | MediaCoverage;
+        value: string | MediaCoverage;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -314,10 +314,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -337,7 +337,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -488,8 +488,8 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * via the `definition` "about-section".
  */
 export interface AboutSection {
-  id: number;
-  profilePicture?: (number | null) | Media;
+  id: string;
+  profilePicture?: (string | null) | Media;
   bio: {
     root: {
       type: string;
@@ -505,7 +505,7 @@ export interface AboutSection {
     };
     [k: string]: unknown;
   };
-  cv?: (number | null) | Media;
+  cv?: (string | null) | Media;
   twitterUrl?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -515,7 +515,7 @@ export interface AboutSection {
  * via the `definition` "footer-settings".
  */
 export interface FooterSetting {
-  id: number;
+  id: string;
   socialLinks?:
     | {
         platform:
@@ -542,11 +542,15 @@ export interface FooterSetting {
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
-  id: number;
+  id: string;
   /**
    * How many publications to show on the homepage. Sorted by most recent date.
    */
   publicationsPerPage?: number | null;
+  /**
+   * Display a cookie consent banner to visitors. Only enable if you are collecting cookies or running analytics that require consent.
+   */
+  cookieBannerEnabled?: boolean | null;
   /**
    * When enabled, keyword pills are shown above the publications list so visitors can filter by topic.
    */
@@ -600,6 +604,7 @@ export interface FooterSettingsSelect<T extends boolean = true> {
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   publicationsPerPage?: T;
+  cookieBannerEnabled?: T;
   publicationsKeywordFilter?: T;
   sections?:
     | T
