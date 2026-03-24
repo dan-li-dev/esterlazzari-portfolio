@@ -1,9 +1,20 @@
+import Link from 'next/link'
+
 export const dynamic = 'force-dynamic'
 
 export default function PrivacyPage() {
   return (
     <main className="bg-background text-foreground min-h-screen py-16 px-6 sm:px-12 max-w-3xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 text-card-foreground">Privacy Policy</h1>
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="mb-8 text-sm text-muted-foreground flex items-center gap-1.5">
+        <Link href="/" className="hover:text-primary transition-colors">
+          Home
+        </Link>
+        <span aria-hidden="true">/</span>
+        <span className="text-foreground">Privacy Policy</span>
+      </nav>
+
+      <h1 className="text-4xl mb-8 text-card-foreground">Privacy Policy</h1>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2 text-card-foreground">1. Introduction</h2>

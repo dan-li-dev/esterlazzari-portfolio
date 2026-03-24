@@ -7,6 +7,7 @@ import Footer from '@/app/(frontend)/containers/Footer'
 import type { Metadata } from 'next'
 import CookieBanner from '@/app/(frontend)/components/CookieBanner'
 import { Analytics } from '@vercel/analytics/next'
+import { getPayloadClient } from '@/app/(frontend)/lib/payload'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -25,6 +26,10 @@ const dmSerifDisplay = DM_Serif_Display({
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
+  const payload = await getPayloadClient()
+  const siteSettings = await payload.findGlobal({ slug: 'site-settings' })
+  const cookieBannerEnabled = siteSettings?.cookieBannerEnabled ?? false
+
   return (
     <html
       lang="en"
@@ -34,7 +39,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body suppressHydrationWarning>
         <NavWrapper />
         <main>{children}</main>
-        <CookieBanner />
+        {cookieBannerEnabled && <CookieBanner />}
         <Footer />
         <Analytics />
       </body>
