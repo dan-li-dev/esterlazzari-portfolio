@@ -40,21 +40,23 @@ describe('PublicationCard', () => {
     expect(screen.getByText(/June 2023/)).toBeInTheDocument()
   })
 
-  it('renders "Unknown Date" when date is null', () => {
+  it('does not render a date when date is null', () => {
     render(<PublicationCard {...base} date={null} />)
-    expect(screen.getByText('Unknown Date')).toBeInTheDocument()
+    expect(screen.queryByText(/Unknown Date/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/January|February|March|April|May|June|July|August|September|October|November|December/)).not.toBeInTheDocument()
   })
 
-  it('"See Paper" links to paperLink when provided', () => {
+  it('renders an arrow link to the paper when paperLink is provided', () => {
     render(<PublicationCard {...base} />)
-    const link = screen.getByRole('link', { name: /See Paper/i })
+    const link = screen.getByRole('link', { name: /open paper/i })
     expect(link).toHaveAttribute('href', base.paperLink)
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noreferrer')
   })
 
-  it('"See Paper" links to "#" when paperLink is absent', () => {
+  it('does not render a paper link when paperLink is absent', () => {
     render(<PublicationCard {...base} paperLink={null} />)
-    const link = screen.getByRole('link', { name: /See Paper/i })
-    expect(link).toHaveAttribute('href', '#')
+    expect(screen.queryByRole('link', { name: /open paper/i })).not.toBeInTheDocument()
   })
 
   it('shows Google Scholar link when scholarLink is provided', () => {
@@ -66,5 +68,10 @@ describe('PublicationCard', () => {
   it('hides Google Scholar link when scholarLink is absent', () => {
     render(<PublicationCard {...base} scholarLink={null} />)
     expect(screen.queryByRole('link', { name: /Google Scholar/i })).not.toBeInTheDocument()
+  })
+
+  it('does not render the meta row when both journal and date are absent', () => {
+    render(<PublicationCard {...base} journal={null} date={null} />)
+    expect(screen.queryByText(/June 2023/)).not.toBeInTheDocument()
   })
 })

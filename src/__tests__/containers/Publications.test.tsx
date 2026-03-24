@@ -67,7 +67,7 @@ describe('Publications server component', () => {
     const jsx = await Publications()
     render(jsx)
     // With perPage=1 and 2 docs, page indicator should show
-    expect(screen.getByText('Page 1 of 2')).toBeInTheDocument()
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
   })
 
   it('falls back to perPage=10 when site settings returns null', async () => {

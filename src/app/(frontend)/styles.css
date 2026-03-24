@@ -79,6 +79,16 @@ html {
 }
 
 @layer components {
+  .filter-pill {
+    @apply px-4 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-muted-foreground cursor-pointer transition-all duration-200 hover:border-foreground/30 hover:text-foreground;
+  }
+
+  .filter-pill-active {
+    @apply bg-foreground text-white border-foreground hover:text-white hover:border-foreground;
+  }
+}
+
+@layer components {
   .nav-link {
     @apply relative text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors duration-200;
   }

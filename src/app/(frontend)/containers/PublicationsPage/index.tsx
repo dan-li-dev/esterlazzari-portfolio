@@ -7,6 +7,7 @@ const Publications = async () => {
 
   const siteSettings = await payload.findGlobal({ slug: 'site-settings' })
   const perPage = siteSettings?.publicationsPerPage ?? 10
+  const keywordFilterEnabled = siteSettings?.publicationsKeywordFilter ?? false
 
   const publicationsQuery = await payload.find({
     collection: 'publications',
@@ -28,7 +29,11 @@ const Publications = async () => {
     <section id="research" className="scroll-mt-16 bg-background text-foreground py-12 lg:py-20">
       <div className="container mx-auto px-6 lg:px-24">
         <h2 className="text-4xl text-center mb-8">Publications</h2>
-        <PublicationsList publications={publicationsQuery.docs} perPage={perPage} />
+        <PublicationsList
+          publications={publicationsQuery.docs}
+          perPage={perPage}
+          keywordFilterEnabled={keywordFilterEnabled}
+        />
       </div>
     </section>
   )

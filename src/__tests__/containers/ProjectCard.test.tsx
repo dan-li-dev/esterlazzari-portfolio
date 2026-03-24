@@ -51,4 +51,15 @@ describe('ProjectCard', () => {
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', 'noreferrer')
   })
+
+  it('does not render RichText when description is absent', () => {
+    render(<ProjectCard {...base} description={undefined} />)
+    expect(screen.queryByTestId('rich-text')).not.toBeInTheDocument()
+  })
+
+  it('renders the status as a badge element', () => {
+    render(<ProjectCard {...base} />)
+    const badge = screen.getByText(base.status)
+    expect(badge.tagName).toBe('SPAN')
+  })
 })

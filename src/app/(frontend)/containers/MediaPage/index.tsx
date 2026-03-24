@@ -33,7 +33,7 @@ const Media = async () => {
           <div className="container mx-auto px-6 py-1 lg:py-16 lg:px-24">
             <h2 className="text-4xl mb-12 text-foreground text-center">Media Coverage</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {mediaToShow.map((item, i) => (
                 <MediaCard key={i} {...item} />
               ))}

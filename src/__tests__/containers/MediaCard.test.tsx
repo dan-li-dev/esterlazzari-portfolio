@@ -16,16 +16,22 @@ describe('MediaCard', () => {
     image: null as null,
   }
 
-  it('renders the title as a link', () => {
+  it('wraps the entire card in a link to the article', () => {
     render(<MediaCard {...base} />)
-    const link = screen.getByRole('link', { name: base.title })
-    expect(link).toBeInTheDocument()
+    const link = screen.getByRole('link')
     expect(link).toHaveAttribute('href', base.link)
   })
 
-  it('title link opens in a new tab', () => {
+  it('card link opens in a new tab with rel="noreferrer"', () => {
     render(<MediaCard {...base} />)
-    expect(screen.getByRole('link', { name: base.title })).toHaveAttribute('target', '_blank')
+    const link = screen.getByRole('link')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noreferrer')
+  })
+
+  it('renders the title text inside the card', () => {
+    render(<MediaCard {...base} />)
+    expect(screen.getByText(base.title)).toBeInTheDocument()
   })
 
   it('renders the publisher name', () => {
@@ -53,6 +59,6 @@ describe('MediaCard', () => {
 
   it('falls back to "#" when link is empty', () => {
     render(<MediaCard {...base} link="" />)
-    expect(screen.getByRole('link', { name: base.title })).toHaveAttribute('href', '#')
+    expect(screen.getByRole('link')).toHaveAttribute('href', '#')
   })
 })

@@ -548,6 +548,10 @@ export interface SiteSetting {
    */
   publicationsPerPage?: number | null;
   /**
+   * When enabled, keyword pills are shown above the publications list so visitors can filter by topic.
+   */
+  publicationsKeywordFilter?: boolean | null;
+  /**
    * Control visibility and order of the Publications, Media, and Projects sections.
    */
   sections?:
@@ -596,6 +600,7 @@ export interface FooterSettingsSelect<T extends boolean = true> {
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   publicationsPerPage?: T;
+  publicationsKeywordFilter?: T;
   sections?:
     | T
     | {

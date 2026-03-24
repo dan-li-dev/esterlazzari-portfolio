@@ -28,11 +28,9 @@ const Projects = async () => {
         <div className="container mx-auto px-6 lg:px-24">
           <h2 className="text-4xl text-center mb-12">Current Projects</h2>
 
-          <div className="flex flex-col items-center gap-12">
+          <div className="flex flex-col gap-4">
             {projectsToShow.map((project, idx) => (
-              <div key={idx} className="w-full max-w-3xl">
-                <ProjectCard {...project} paperLink={project.paperLink || undefined} />
-              </div>
+              <ProjectCard key={idx} {...project} paperLink={project.paperLink || undefined} />
             ))}
           </div>
         </div>

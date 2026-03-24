@@ -18,6 +18,16 @@ export const SiteSettings: GlobalConfig = {
       },
     },
     {
+      name: 'publicationsKeywordFilter',
+      type: 'checkbox',
+      label: 'Enable keyword filtering on publications',
+      defaultValue: false,
+      admin: {
+        description:
+          'When enabled, keyword pills are shown above the publications list so visitors can filter by topic.',
+      },
+    },
+    {
       name: 'sections',
       type: 'array',
       label: 'Sections (drag to reorder)',
