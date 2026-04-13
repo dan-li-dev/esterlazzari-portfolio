@@ -76,6 +76,40 @@ html {
     /* Design tokens */
     --radius: 12px;
   }
+
+  [data-theme='dark'] {
+    --background: 220 15% 10%;       /* #161a1f deep blue-grey */
+    --foreground: 60 10% 92%;        /* #ECEAE4 warm off-white */
+
+    --card: 220 13% 14%;             /* #1e2228 */
+    --card-foreground: 60 10% 92%;
+
+    --popover: 220 13% 14%;
+    --popover-foreground: 60 10% 92%;
+
+    --primary: 160 38% 40%;          /* brighter forest green for dark bg */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 160 18% 18%;        /* dark green tint */
+    --secondary-foreground: 160 30% 75%;
+
+    --muted: 220 12% 18%;
+    --muted-foreground: 60 5% 55%;
+
+    --accent: 160 18% 18%;
+    --accent-foreground: 160 38% 50%;
+
+    --destructive: 16 52% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
+    --ring: 160 38% 40%;
+
+    --success: 158 45% 45%;
+    --warning: 34 89% 55%;
+    --error: 16 52% 55%;
+  }
 }
 
 @layer components {
@@ -142,7 +176,7 @@ html {
   opacity: 0;
 } */
 
-/* html[data-theme='dark'], */
+html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }

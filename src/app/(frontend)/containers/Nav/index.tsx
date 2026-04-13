@@ -5,6 +5,7 @@ import { IoIosMenu } from 'react-icons/io'
 import { CiSquareRemove } from 'react-icons/ci'
 import { scrollToSection, scrollToTop } from '@/app/(frontend)/utils/scroll'
 import { usePathname, useRouter } from 'next/navigation'
+import ThemeToggle from '@/app/(frontend)/components/ThemeToggle'
 
 const ALL_MENU_ITEMS: [string, string, string?][] = [
   ['About', 'about'],
@@ -26,25 +27,44 @@ const Navbar = ({ hiddenSections = [] }: NavbarProps) => {
   const router = useRouter()
 
   useEffect(() => {
-    const sectionIds = ALL_MENU_ITEMS.map(([, href]) => href)
+    const sectionIds = ['hero', ...ALL_MENU_ITEMS.map(([, href]) => href)]
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
+    const handleScroll = () => {
+      const navbarHeight =
+        document.querySelector('header.sticky')?.getBoundingClientRect().height ?? 64
+      // Offset just below the navbar
+      const scrollThreshold = navbarHeight + 20
+
+      // At the bottom of the page, always highlight Contact
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50
+      if (atBottom) {
+        setActiveSection('footer')
+        return
+      }
+
+      // Find the last section whose top has scrolled past the navbar
+      let current = ''
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const top = el.getBoundingClientRect().top
+        if (top <= scrollThreshold) {
+          current = id
+        } else {
+          break
         }
-      },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0 },
-    )
+      }
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
+      // Hero means we're at the top — no menu item active
+      setActiveSection(current === 'hero' ? '' : current)
+    }
 
-    return () => observer.disconnect()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    // Run once on mount to set initial state
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleLogoClick = () => {
@@ -72,7 +92,7 @@ const Navbar = ({ hiddenSections = [] }: NavbarProps) => {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-7">
+          <div className="hidden md:flex items-center gap-7">
             {menuItems.map(([label, href]) => {
               const isActive = activeSection === href
               return (
@@ -85,22 +105,26 @@ const Navbar = ({ hiddenSections = [] }: NavbarProps) => {
                 </a>
               )
             })}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-muted-foreground hover:text-foreground focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <CiSquareRemove className="h-6 w-6" /> : <IoIosMenu className="h-6 w-6" />}
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-muted-foreground hover:text-foreground focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <CiSquareRemove className="h-6 w-6" /> : <IoIosMenu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-card border-b border-border">
+        <div className="md:hidden absolute left-0 right-0 top-full bg-card border-b border-border shadow-lg">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {menuItems.map(([label, href]) => {
               const isActive = activeSection === href

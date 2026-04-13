@@ -1,9 +1,10 @@
 export const scrollToSection = (id: string) => {
   const el = document.getElementById(id)
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth' })
-    // optionally remove the hash from the URL if added manually
-    history.replaceState(null, '', ' ') // removes #about if it was there
+    const navbarHeight = document.querySelector('header.sticky')?.getBoundingClientRect().height ?? 64
+    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight
+    window.scrollTo({ top, behavior: 'smooth' })
+    history.replaceState(null, '', ' ')
   }
 }
 

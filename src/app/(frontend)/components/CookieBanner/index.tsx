@@ -11,17 +11,17 @@ const CookieBanner = () => {
       enableDeclineButton
       cookieName="site-consent"
       style={{
-        background: 'hsl(0 0% 100%)',
-        color: 'hsl(70 4% 10%)',
-        borderTop: '1px solid hsl(50 8% 90%)',
+        background: 'hsl(var(--card))',
+        color: 'hsl(var(--card-foreground))',
+        borderTop: '1px solid hsl(var(--border))',
         padding: '1rem 1.5rem',
         fontSize: '0.875rem',
         fontFamily: 'var(--font-sans, sans-serif)',
         alignItems: 'center',
       }}
       buttonStyle={{
-        background: 'hsl(160 38% 27%)',
-        color: 'hsl(0 0% 100%)',
+        background: 'hsl(var(--primary))',
+        color: 'hsl(var(--primary-foreground))',
         borderRadius: '9999px',
         padding: '0.4rem 1.1rem',
         fontSize: '0.8rem',
@@ -31,8 +31,8 @@ const CookieBanner = () => {
       }}
       declineButtonStyle={{
         background: 'transparent',
-        color: 'hsl(60 3% 34%)',
-        border: '1px solid hsl(50 8% 90%)',
+        color: 'hsl(var(--muted-foreground))',
+        border: '1px solid hsl(var(--border))',
         borderRadius: '9999px',
         padding: '0.4rem 1.1rem',
         fontSize: '0.8rem',
@@ -43,7 +43,7 @@ const CookieBanner = () => {
       expires={180}
     >
       This website uses cookies to enhance the user experience. Read our{' '}
-      <a href="/privacy" style={{ color: 'hsl(160 38% 27%)', textDecoration: 'underline' }}>
+      <a href="/privacy" style={{ color: 'hsl(var(--primary))', textDecoration: 'underline' }}>
         privacy policy
       </a>
       .

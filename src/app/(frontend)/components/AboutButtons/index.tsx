@@ -15,7 +15,7 @@ export default function AboutButtons() {
         <button
           key={target}
           onClick={() => scrollToSection(target)}
-          className="bg-white text-primary font-semibold px-6 py-3 rounded hover:bg-white/90 transition cursor-pointer"
+          className="bg-card text-primary font-semibold px-6 py-3 rounded hover:bg-card/90 transition cursor-pointer"
         >
           {label}
         </button>

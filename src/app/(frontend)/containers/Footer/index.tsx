@@ -26,7 +26,7 @@ const Footer = async () => {
   const copyright = settings?.copyrightText ?? '© Ester Lazzari. All rights reserved.'
 
   return (
-    <footer id="footer" className="bg-gray-900 text-white py-12 text-center">
+    <footer id="footer" className="bg-[hsl(220,15%,8%)] text-white py-12 text-center">
       <div className="container mx-auto px-4 flex flex-col items-center space-y-8">
         <ArrowToTop />
 
@@ -50,9 +50,9 @@ const Footer = async () => {
           </div>
         )}
 
-        <hr className="w-1/3 border-gray-700" />
+        <hr className="w-1/3 border-white/20" />
 
-        <div className="space-y-1 text-sm text-neutral-400">
+        <div className="space-y-1 text-sm text-white/50">
           {copyright.split('\n').map((line, i) => (
             <p key={i}>{line}</p>
           ))}
