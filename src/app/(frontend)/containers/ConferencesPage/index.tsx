@@ -55,7 +55,7 @@ const Conferences = async () => {
         ${
           isPlanned
             ? 'bg-yellow-100 text-yellow-800 hover:ring-2 hover:ring-yellow-300 transition'
-            : 'bg-white text-primary'
+            : 'bg-card text-primary'
         }
       `}
                     >
