@@ -5,11 +5,14 @@ export default async function NavWrapper() {
   const payload = await getPayloadClient()
   const siteSettings = await payload.findGlobal({ slug: 'site-settings' })
 
-  const hiddenSections = (
-    (siteSettings?.sections as { section: string; visible: boolean }[] | undefined) ?? []
-  )
-    .filter((s) => !s.visible)
-    .map((s) => s.section)
+  const ALL_SECTIONS = ['publications', 'media', 'projects', 'teaching']
+  const configuredSections = siteSettings?.sections as
+    | { section: string; visible: boolean }[]
+    | undefined
+
+  const hiddenSections = configuredSections?.length
+    ? configuredSections.filter((s) => !s.visible).map((s) => s.section)
+    : ALL_SECTIONS
 
   return <Navbar hiddenSections={hiddenSections} />
 }

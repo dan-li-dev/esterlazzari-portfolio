@@ -12,6 +12,7 @@ const ALL_MENU_ITEMS: [string, string, string?][] = [
   ['Publications', 'research', 'publications'],
   ['Media', 'media', 'media'],
   ['Projects', 'projects', 'projects'],
+  ['Teaching', 'teaching', 'teaching'],
   ['Conferences', 'conferences'],
   ['Contact', 'footer'],
 ]
@@ -106,6 +107,16 @@ const Navbar = ({ hiddenSections = [] }: NavbarProps) => {
               )
             })}
             <ThemeToggle />
+            {process.env.NODE_ENV === 'development' && (
+              <a
+                href="/api/dev-login"
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-medium px-2.5 py-1 rounded-md border border-amber-500/60 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-colors"
+              >
+                Admin
+              </a>
+            )}
           </div>
 
           {/* Mobile: theme toggle + hamburger */}

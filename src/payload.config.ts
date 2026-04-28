@@ -12,6 +12,8 @@ import { Projects } from './collections/Projects'
 import { Conferences } from './collections/Conferences'
 import { Publications } from './collections/Publications'
 import { MediaCoverage } from './collections/MediaCoverage'
+import { Teaching } from './collections/Teaching'
+import { Skills } from './collections/Skills'
 import { AboutSection } from './globals/AboutSection'
 import { FooterSettings } from './globals/FooterSettings'
 import { SiteSettings } from './globals/SiteSettings'
@@ -37,7 +39,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Media, Users, Publications, Projects, Conferences, MediaCoverage],
+  collections: [Media, Users, Publications, Projects, Conferences, MediaCoverage, Teaching, Skills],
   globals: [AboutSection, FooterSettings, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
