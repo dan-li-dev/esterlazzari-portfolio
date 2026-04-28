@@ -6,6 +6,7 @@ import Publications from '@/app/(frontend)/containers/PublicationsPage'
 import Projects from '@/app/(frontend)/containers/ProjectsPage'
 import Conferences from '@/app/(frontend)/containers/ConferencesPage'
 import Media from '@/app/(frontend)/containers/MediaPage'
+import Teaching from '@/app/(frontend)/containers/TeachingPage'
 import { Animations } from './scroll-effect'
 import GA from '@/app/(frontend)/components/GoogleAnalytics'
 import { getPayloadClient } from '@/app/(frontend)/lib/payload'
@@ -14,6 +15,7 @@ const SECTION_COMPONENTS = {
   publications: Publications,
   media: Media,
   projects: Projects,
+  teaching: Teaching,
 } as const
 
 type SectionKey = keyof typeof SECTION_COMPONENTS
@@ -25,9 +27,10 @@ export default async function HomePage() {
   const sections: { section: SectionKey; visible: boolean }[] = siteSettings?.sections?.length
     ? (siteSettings.sections as { section: SectionKey; visible: boolean }[])
     : [
-        { section: 'publications', visible: true },
-        { section: 'media', visible: true },
-        { section: 'projects', visible: true },
+        { section: 'publications', visible: false },
+        { section: 'media', visible: false },
+        { section: 'projects', visible: false },
+        { section: 'teaching', visible: false },
       ]
 
   return (

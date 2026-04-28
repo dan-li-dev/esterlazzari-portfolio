@@ -73,6 +73,8 @@ export interface Config {
     projects: Project;
     conferences: Conference;
     'media-coverage': MediaCoverage;
+    teaching: Teaching;
+    skills: Skill;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +88,8 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     conferences: ConferencesSelect<false> | ConferencesSelect<true>;
     'media-coverage': MediaCoverageSelect<false> | MediaCoverageSelect<true>;
+    teaching: TeachingSelect<false> | TeachingSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -255,6 +259,45 @@ export interface MediaCoverage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teaching".
+ */
+export interface Teaching {
+  id: number;
+  courseName: string;
+  institution?: string | null;
+  role: 'instructor' | 'co-instructor' | 'ta' | 'guest-lecturer';
+  startDate?: string | null;
+  /**
+   * Leave empty if ongoing
+   */
+  endDate?: string | null;
+  /**
+   * Brief description of the course content or your role
+   */
+  description?: string | null;
+  /**
+   * Skills and tools covered in this course
+   */
+  skills?: (number | Skill)[] | null;
+  /**
+   * Link to course page or syllabus
+   */
+  courseLink?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -300,6 +343,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media-coverage';
         value: number | MediaCoverage;
+      } | null)
+    | ({
+        relationTo: 'teaching';
+        value: number | Teaching;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: number | Skill;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -445,6 +496,31 @@ export interface MediaCoverageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teaching_select".
+ */
+export interface TeachingSelect<T extends boolean = true> {
+  courseName?: T;
+  institution?: T;
+  role?: T;
+  startDate?: T;
+  endDate?: T;
+  description?: T;
+  skills?: T;
+  courseLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -560,7 +636,7 @@ export interface SiteSetting {
    */
   sections?:
     | {
-        section: 'publications' | 'media' | 'projects';
+        section: 'publications' | 'media' | 'projects' | 'teaching';
         visible?: boolean | null;
         id?: string | null;
       }[]

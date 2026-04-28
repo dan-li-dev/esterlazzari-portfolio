@@ -1,4 +1,4 @@
-import type { GlobalConfig } from 'payload'
+import type { CollectionSlug, GlobalConfig } from 'payload'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -54,13 +54,32 @@ export const SiteSettings: GlobalConfig = {
             { label: 'Publications', value: 'publications' },
             { label: 'Media Coverage', value: 'media' },
             { label: 'Projects', value: 'projects' },
+            { label: 'Teaching', value: 'teaching' },
           ],
         },
         {
           name: 'visible',
           type: 'checkbox',
           label: 'Visible',
-          defaultValue: true,
+          defaultValue: false,
+          validate: async (value, { req, siblingData }) => {
+            if (!value) return true
+            const sectionCollectionMap: Record<string, CollectionSlug> = {
+              publications: 'publications',
+              media: 'media-coverage',
+              projects: 'projects',
+              teaching: 'teaching',
+            }
+            const section = (siblingData as { section?: string }).section
+            const collectionSlug = section ? sectionCollectionMap[section] : undefined
+            if (!collectionSlug) return true
+            const { totalDocs } = await req.payload.count({ collection: collectionSlug })
+            if (totalDocs === 0) {
+              const label = section!.charAt(0).toUpperCase() + section!.slice(1)
+              return `Add content to the ${label} section before enabling visibility.`
+            }
+            return true
+          },
         },
       ],
     },

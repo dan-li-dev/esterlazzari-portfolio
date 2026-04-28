@@ -12,6 +12,7 @@ const run = async () => {
         { section: 'publications', visible: true },
         { section: 'media', visible: true },
         { section: 'projects', visible: true },
+        { section: 'teaching', visible: true },
       ],
     },
   })

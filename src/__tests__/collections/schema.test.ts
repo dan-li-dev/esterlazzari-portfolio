@@ -25,7 +25,8 @@ describe('Publications collection schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(Publications.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(Publications.access?.read?.({} as any)).toBe(true)
   })
 
   it('has required title field', () => {
@@ -65,7 +66,8 @@ describe('Projects collection schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(Projects.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(Projects.access?.read?.({} as any)).toBe(true)
   })
 
   it('has required title field', () => {
@@ -101,7 +103,8 @@ describe('Conferences collection schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(Conferences.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(Conferences.access?.read?.({} as any)).toBe(true)
   })
 
   it('has required name field', () => {
@@ -140,7 +143,8 @@ describe('MediaCoverage collection schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(MediaCoverage.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(MediaCoverage.access?.read?.({} as any)).toBe(true)
   })
 
   it.each(['title', 'publisher', 'link'])('has required %s field', (name) => {
@@ -169,7 +173,8 @@ describe('AboutSection global schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(AboutSection.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(AboutSection.access?.read?.({} as any)).toBe(true)
   })
 
   it('has required bio richText field', () => {
@@ -200,7 +205,8 @@ describe('FooterSettings global schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(FooterSettings.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(FooterSettings.access?.read?.({} as any)).toBe(true)
   })
 
   it('has socialLinks array field with platform and url sub-fields', () => {
@@ -232,7 +238,8 @@ describe('SiteSettings global schema', () => {
   })
 
   it('allows public read access', () => {
-    expect(SiteSettings.access?.read?.()).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(SiteSettings.access?.read?.({} as any)).toBe(true)
   })
 
   it('has publicationsPerPage number field', () => {
